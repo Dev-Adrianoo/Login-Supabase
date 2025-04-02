@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="inicio.css" />
+    <link href="https://cdn.jsdelivr.net/npm/@iconscout/unicons/css/line.css" rel="stylesheet">
+    <title>Bem-vindo</title>
+  </head>
+  <body class="body-2">
+    <div class="divSearch">
+       <input
+        type="text"
+        class="Search"
+        placeholder="Pesquisar"
+        id="SearchBar"
+        onkeyup="filtrarItens()"
+      />
+      <i class="uil uil-search"></i>
+    </div>
+    <div class="container-row">
+      <div class="sidebar">
+        <div class="imageDivPai">
+            <div id="usuarioInfo" class="usuario-info">
+          <img class="imagem-perfil" src="images/foto-perfil.jpg" />
+          <p>Adriano Souza</p>
+          <h2 id="mensagem">Carregando...</h2>
+          </div>
+          <hr />
+          <ul class="list-topics">
+            <li><a href="#">Início</a></li>
+            <li><a href="#">Perfil</a></li>
+            <li><a href="#">Configurações</a></li>
+            <li><a href="#">Ajuda</a></li>
+            <li><a href="#" onclick="logout()">Sair</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="cards-container">
+        <div class="card">
+          <div class="card-image"></div>
+          <h2>Segurança Cibernética</h2>
+          <p>Lorem ipsum dolor sit amet consectetur...</p>
+          <div id="modal-1" class="modal">
+            <div class="modal-content">
+              <span class="close" onclick="fecharModal('modal-1')">X</span>
+              <h2>Segurança Cibernética</h2>
+              <p>
+                Detalhes sobre segurança cibernética: proteção contra ataques
+                digitais e mais.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image"></div>
+          <h2>Privacidade Web</h2>
+          <p>Lorem ipsum dolor sit amet consectetur...</p>
+          <div id="modal-2" class="modal">
+            <div class="modal-content">
+              <span class="close" onclick="fecharModal('modal-2')">X</span>
+              <h2>Privacidade Web</h2>
+              <p>
+                Detalhes sobre privacidade na web: como proteger seus dados
+                online.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image"></div>
+          <h2>História WhatsApp</h2>
+          <p>Lorem ipsum dolor sit amet consectetur...</p>
+          <div id="modal-3" class="modal">
+            <div class="modal-content">
+              <span class="close" onclick="fecharModal('modal-3')">X</span>
+              <h2>História WhatsApp</h2>
+              <p>
+                Detalhes sobre a história do WhatsApp: sua criação e evolução.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image"></div>
+          <h2>Desenvolvimento Web</h2>
+          <p>Lorem ipsum dolor sit amet consectetur...</p>
+          <div id="modal-4" class="modal">
+            <div class="modal-content">
+              <span class="close" onclick="fecharModal('modal-4')">X</span>
+              <h2>Desenvolvimento Web</h2>
+              <p>
+                Detalhes sobre desenvolvimento web: HTML, CSS, JavaScript e
+                mais.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image"></div>
+          <h2>Redes de Computadores</h2>
+          <p>Lorem ipsum dolor sit amet consectetur...</p>
+          <div id="modal-5" class="modal">
+            <div class="modal-content">
+              <span class="close" onclick="fecharModal('modal-5')">X</span>
+              <h2>Redes de Computadores</h2>
+              <p>
+                Detalhes sobre redes de computadores: protocolos e
+                infraestrutura.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image"></div>
+          <h2>Programação</h2>
+          <p>Lorem ipsum dolor sit amet consectetur...</p>
+          <div id="modal-6" class="modal">
+            <div class="modal-content">
+              <span class="close" onclick="fecharModal('modal-6')">X</span>
+              <h2>Programação</h2>
+              <p>Detalhes sobre programação: linguagens e lógica de código.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image"></div>
+          <h2>Inteligência Artificial</h2>
+          <p>Lorem ipsum dolor sit amet consectetur...</p>
+          <div id="modal-7" class="modal">
+            <div class="modal-content">
+              <span class="close" onclick="fecharModal('modal-7')">X</span>
+              <h2>Inteligência Artificial</h2>
+              <p>
+                Detalhes sobre inteligência artificial: aprendizado de máquina e
+                mais.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image"></div>
+          <h2>Big Data</h2>
+          <p>Lorem ipsum dolor sit amet consectetur...</p>
+          <div id="modal-8" class="modal">
+            <div class="modal-content">
+              <span class="close" onclick="fecharModal('modal-8')">X</span>
+              <h2>Big Data</h2>
+              <p>
+                Detalhes sobre big data: análise de grandes volumes de dados.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image"></div>
+          <h2>Machine Learning</h2>
+          <p>Lorem ipsum dolor sit amet consectetur...</p>
+          <div id="modal-9" class="modal">
+            <div class="modal-content">
+              <span class="close" onclick="fecharModal('modal-9')">X</span>
+              <h2>Machine Learning</h2>
+              <p>Detalhes sobre machine learning: algoritmos e aplicações.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+
+    const usuarioEmail = localStorage.getItem("usuarioEmail");
+    document.getElementById("mensagem").innerText =
+      usuarioEmail || "Usuário não autenticado!";
+    function logout() {
+      localStorage.removeItem("usuarioEmail");
+      window.location.href = "cadastro.html";
+    }
+    function filtrarItens() {
+      const filtro = document.getElementById("SearchBar").value.toLowerCase();
+
+      const cards = document.querySelectorAll(".card");
+
+      cards.forEach((card) => {
+        const titulo = card.querySelector("h2").textContent.toLowerCase();
+
+        if (titulo.includes(filtro)) {
+          card.style.display = "";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+    function abrirModal(modalId) {
+      const modal = document.getElementById(modalId);
+      modal.style.display = "flex";
+    }
+
+    function fecharModal(modalId) {
+      const modal = document.getElementById(modalId);
+      modal.style.display = "none";
+    }
+
+    const cards = document.querySelectorAll(".card");
+    cards.forEach((card, index) => {
+      card.addEventListener("click", (event) => {
+        if (!event.target.classList.contains("close")) {
+          abrirModal(`modal-${index + 1}`);
+        }
+      });
+    });
+  </script>
+</html>
