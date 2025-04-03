@@ -12,6 +12,7 @@
       body {
         overflow: hidden;
       }
+
     </style>
   </head>
   <body>
@@ -63,12 +64,15 @@
             "Erro: " + error.message;
         } else {
           document.getElementById("mensagemCadastro").innerText =
-            "Login realizado com sucesso!";
+            "Login realizado com sucesso!"
           localStorage.setItem("usuarioEmail", email);
+
+          alert(localStorage.getItem("usuarioEmail"));
           setTimeout(() => {
             window.location.href = "bem-vindo.html";
           }, 2000);
         }
+
       }
 
       async function cadastrar() {

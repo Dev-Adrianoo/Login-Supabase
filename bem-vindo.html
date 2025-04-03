@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="inicio.css" />
     <link href="https://cdn.jsdelivr.net/npm/@iconscout/unicons/css/line.css" rel="stylesheet">
+    <script type="module" src="script.js"></script>
     <title>Bem-vindo</title>
   </head>
   <body class="body-2">
@@ -41,6 +42,17 @@
           <div class="card-image"></div>
           <h2>Segurança Cibernética</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
+          <div class="interativeIcons">
+            <span>
+              <img src="images/coracao.png" id="heartIcon">
+            </span>
+            <span>
+              <img src="images/comente.png" id="">
+            </span>
+            <span>
+              <img src="images/mail-send.png">
+            </span>
+          </div>
           <div id="modal-1" class="modal">
             <div class="modal-content">
               <span class="close" onclick="fecharModal('modal-1')">X</span>
@@ -56,6 +68,17 @@
           <div class="card-image"></div>
           <h2>Privacidade Web</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
+          <div class="interativeIcons">
+            <span>
+              <img src="images/coracao.png" id="heartIcon">
+            </span>
+            <span>
+              <img src="images/comente.png" id="">
+            </span>
+            <span>
+              <img src="images/mail-send.png">
+            </span>
+          </div>
           <div id="modal-2" class="modal">
             <div class="modal-content">
               <span class="close" onclick="fecharModal('modal-2')">X</span>
@@ -168,14 +191,44 @@
     </div>
   </body>
   <script>
+    
+    
+    const heartIcon = document.getElementById("heartIcon");
+    const heardIcon2 = document.getElementById('heartIcon 2')
+
+    heartIcon.addEventListener('click', function(){
+
+      event.stopPropagation()
+
+       if(heartIcon.getAttribute('src').includes('images/coracao.png')){
+
+        heartIcon.setAttribute('src','images/coracao-hover.png')
+       }else {
+        heartIcon.setAttribute('src', 'images/coracao.png')
+       }
+    })
+
+    heartIcon2.addEventListener('click', function(){
+
+    event.stopPropagation()
+
+    if(heartIcon2.getAttribute('src').includes('images/coracao.png')){
+
+    heartIcon2.setAttribute('src','images/coracao-hover.png')
+  }else {
+    heartIcon2.setAttribute('src', 'images/coracao.png')
+  }
+  })
 
     const usuarioEmail = localStorage.getItem("usuarioEmail");
     document.getElementById("mensagem").innerText =
       usuarioEmail || "Usuário não autenticado!";
+
     function logout() {
       localStorage.removeItem("usuarioEmail");
       window.location.href = "cadastro.html";
     }
+    
     function filtrarItens() {
       const filtro = document.getElementById("SearchBar").value.toLowerCase();
 
@@ -191,6 +244,7 @@
         }
       });
     }
+
     function abrirModal(modalId) {
       const modal = document.getElementById(modalId);
       modal.style.display = "flex";

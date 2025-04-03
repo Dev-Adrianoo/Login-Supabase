@@ -254,6 +254,30 @@ hr {
     position: relative; 
     opacity: 1;
     transition: all 0.3s ease;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card p{
+    margin-bottom: 30px
+}
+
+.interativeIcons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    padding: 5px;
+    width: calc(100% - 35px);
+}
+
+.interativeIcons img {
+    width: 20px;
+    transition: transform  0.3 ease;
+}
+
+.interativeIcons img:hover {
+    transform: scale(1.3);
 }
 
 .modal {
