@@ -4,13 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="inicio.css" />
-    <link href="https://cdn.jsdelivr.net/npm/@iconscout/unicons/css/line.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/@iconscout/unicons/css/line.css"
+      rel="stylesheet"
+    />
     <script type="module" src="script.js"></script>
     <title>Bem-vindo</title>
   </head>
   <body class="body-2">
     <div class="divSearch">
-       <input
+      <input
         type="text"
         class="Search"
         placeholder="Pesquisar"
@@ -22,10 +25,10 @@
     <div class="container-row">
       <div class="sidebar">
         <div class="imageDivPai">
-            <div id="usuarioInfo" class="usuario-info">
-          <img class="imagem-perfil" src="images/foto-perfil.jpg" />
-          <p>Adriano Souza</p>
-          <h2 id="mensagem">Carregando...</h2>
+          <div id="usuarioInfo" class="usuario-info">
+            <img class="imagem-perfil" src="images/foto-perfil.jpg" loading="lazy" />
+            <p>Adriano Souza</p>
+            <h2 id="mensagem">Carregando...</h2>
           </div>
           <hr />
           <ul class="list-topics">
@@ -39,18 +42,18 @@
       </div>
       <div class="cards-container">
         <div class="card">
-          <div class="card-image"></div>
+          <div class="card-image" loading="lazy" ></div>
           <h2>Segurança Cibernética</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
             <span>
-              <img src="images/coracao.png" id="heartIcon">
+              <img src="images/coracao.png" class="heart-icon" data-id="1"  />
             </span>
             <span>
-              <img src="images/comente.png" id="">
+              <img src="images/comente.png" id="" />
             </span>
             <span>
-              <img src="images/mail-send.png">
+              <img src="images/mail-send.png" />
             </span>
           </div>
           <div id="modal-1" class="modal">
@@ -65,18 +68,18 @@
           </div>
         </div>
         <div class="card">
-          <div class="card-image"></div>
+          <div class="card-image2" loading="lazy"></div>
           <h2>Privacidade Web</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
             <span>
-              <img src="images/coracao.png" id="heartIcon">
+              <img src="images/coracao.png" class="heart-icon" data-id="2" />
             </span>
             <span>
-              <img src="images/comente.png" id="">
+              <img src="images/comente.png" id="" />
             </span>
             <span>
-              <img src="images/mail-send.png">
+              <img src="images/mail-send.png" />
             </span>
           </div>
           <div id="modal-2" class="modal">
@@ -91,23 +94,46 @@
           </div>
         </div>
         <div class="card">
-          <div class="card-image"></div>
-          <h2>História WhatsApp</h2>
+          <div class="card-image3" loading="lazy" ></div>
+          <h2>Phishing</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
+          <div class="interativeIcons">
+            <span>
+              <img src="images/coracao.png" class="heart-icon" data-id="3" />
+            </span>
+            <span>
+              <img src="images/comente.png" id="" />
+            </span>
+            <span>
+              <img src="images/mail-send.png" />
+            </span>
+          </div>
           <div id="modal-3" class="modal">
             <div class="modal-content">
               <span class="close" onclick="fecharModal('modal-3')">X</span>
-              <h2>História WhatsApp</h2>
+              <h2>Phishing: Cuidado com Golpes</h2>
               <p>
-                Detalhes sobre a história do WhatsApp: sua criação e evolução.
+                Golpes por e-mail e mensagens são comuns. Aprenda a reconhecer e
+                evitar ataques de phishing.
               </p>
             </div>
           </div>
         </div>
         <div class="card">
-          <div class="card-image"></div>
+          <div class="card-image4" loading="lazy"></div>
           <h2>Desenvolvimento Web</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
+          <div class="interativeIcons">
+            <span>
+              <img src="images/coracao.png" class="heart-icon" data-id="4" />
+            </span>
+            <span>
+              <img src="images/comente.png" id="" />
+            </span>
+            <span>
+              <img src="images/mail-send.png" />
+            </span>
+          </div>
           <div id="modal-4" class="modal">
             <div class="modal-content">
               <span class="close" onclick="fecharModal('modal-4')">X</span>
@@ -120,9 +146,20 @@
           </div>
         </div>
         <div class="card">
-          <div class="card-image"></div>
+          <div class="card-image5" loading="lazy" ></div>
           <h2>Redes de Computadores</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
+          <div class="interativeIcons">
+            <span>
+              <img src="images/coracao.png" class="heart-icon" data-id="6" />
+            </span>
+            <span>
+              <img src="images/comente.png" id="" />
+            </span>
+            <span>
+              <img src="images/mail-send.png" />
+            </span>
+          </div>
           <div id="modal-5" class="modal">
             <div class="modal-content">
               <span class="close" onclick="fecharModal('modal-5')">X</span>
@@ -135,9 +172,20 @@
           </div>
         </div>
         <div class="card">
-          <div class="card-image"></div>
+          <div class="card-image6" loading="lazy" ></div>
           <h2>Programação</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
+          <div class="interativeIcons">
+            <span>
+              <img src="images/coracao.png" class="heart-icon" data-id="8" />
+            </span>
+            <span>
+              <img src="images/comente.png" id="" />
+            </span>
+            <span>
+              <img src="images/mail-send.png" />
+            </span>
+          </div>
           <div id="modal-6" class="modal">
             <div class="modal-content">
               <span class="close" onclick="fecharModal('modal-6')">X</span>
@@ -147,9 +195,20 @@
           </div>
         </div>
         <div class="card">
-          <div class="card-image"></div>
+          <div class="card-image7" loading="lazy"></div>
           <h2>Inteligência Artificial</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
+          <div class="interativeIcons">
+            <span>
+              <img src="images/coracao.png" class="heart-icon" data-id="9" />
+            </span>
+            <span>
+              <img src="images/comente.png" id="" />
+            </span>
+            <span>
+              <img src="images/mail-send.png" />
+            </span>
+          </div>
           <div id="modal-7" class="modal">
             <div class="modal-content">
               <span class="close" onclick="fecharModal('modal-7')">X</span>
@@ -161,10 +220,21 @@
             </div>
           </div>
         </div>
-        <div class="card">
-          <div class="card-image"></div>
+        <!-- <div class="card">
+          <div class="card-image8" loading="lazy"></div>
           <h2>Big Data</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
+          <div class="interativeIcons">
+            <span>
+              <img src="images/coracao.png" class="heart-icon" data-id="11" />
+            </span>
+            <span>
+              <img src="images/comente.png" id="" />
+            </span>
+            <span>
+              <img src="images/mail-send.png" />
+            </span>
+          </div>
           <div id="modal-8" class="modal">
             <div class="modal-content">
               <span class="close" onclick="fecharModal('modal-8')">X</span>
@@ -174,11 +244,22 @@
               </p>
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="card">
-          <div class="card-image"></div>
+          <div class="card-image9" loading="lazy"></div>
           <h2>Machine Learning</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
+          <div class="interativeIcons">
+            <span>
+              <img src="images/coracao.png" class="heart-icon" data-id="12" />
+            </span>
+            <span>
+              <img src="images/comente.png" id="" />
+            </span>
+            <span>
+              <img src="images/mail-send.png" />
+            </span>
+          </div>
           <div id="modal-9" class="modal">
             <div class="modal-content">
               <span class="close" onclick="fecharModal('modal-9')">X</span>
@@ -190,35 +271,34 @@
       </div>
     </div>
   </body>
-  <script>
-    
-    
-    const heartIcon = document.getElementById("heartIcon");
-    const heardIcon2 = document.getElementById('heartIcon 2')
+  <script defer>
+    const heartIcons = document.querySelectorAll(".heart-icon");
 
-    heartIcon.addEventListener('click', function(){
+    heartIcons.forEach((icon) => {
+      const id = icon.getAttribute("data-id");
+      const isLiked = localStorage.getItem(`like-${id}`);
 
-      event.stopPropagation()
+      if (isLiked === "true") {
+        icon.classList.add("liked");
+        icon.src = "images/coracao-hover.png";
+      }
 
-       if(heartIcon.getAttribute('src').includes('images/coracao.png')){
+      icon.addEventListener("click", function (event) {
+        event.stopPropagation();
 
-        heartIcon.setAttribute('src','images/coracao-hover.png')
-       }else {
-        heartIcon.setAttribute('src', 'images/coracao.png')
-       }
-    })
+        const isAlreadyLiked = icon.classList.contains("liked");
 
-    heartIcon2.addEventListener('click', function(){
-
-    event.stopPropagation()
-
-    if(heartIcon2.getAttribute('src').includes('images/coracao.png')){
-
-    heartIcon2.setAttribute('src','images/coracao-hover.png')
-  }else {
-    heartIcon2.setAttribute('src', 'images/coracao.png')
-  }
-  })
+        if (isAlreadyLiked) {
+          icon.classList.remove("liked");
+          icon.src = "images/coracao.png";
+          localStorage.removeItem(`like-${id}`);
+        } else {
+          icon.classList.add("liked");
+          icon.src = "images/coracao-hover.png";
+          localStorage.setItem(`like-${id}`, "true");
+        }
+      });
+    });
 
     const usuarioEmail = localStorage.getItem("usuarioEmail");
     document.getElementById("mensagem").innerText =
@@ -228,7 +308,7 @@
       localStorage.removeItem("usuarioEmail");
       window.location.href = "cadastro.html";
     }
-    
+
     function filtrarItens() {
       const filtro = document.getElementById("SearchBar").value.toLowerCase();
 

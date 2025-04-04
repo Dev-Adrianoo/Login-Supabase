@@ -13,7 +13,7 @@ body {
     width: 100%;
     height:100vh;
     overflow-x: hidden;
-    background-image: url(images/fundo-principal.jpg);
+    background-image: url(images/fundo-principal.webp);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -98,7 +98,7 @@ button:hover {
 }
 
 .body-2{
-    background-image: url(images/fundo-principal.jpg);
+    background-image: url(images/fundo-principal.webp);
     background-position: top right;
     background-repeat: no-repeat;
     background-size: cover;
@@ -168,6 +168,7 @@ button:hover {
     margin-left: 250px; 
     width: 100%; 
     transition: all 0.3s ease; 
+    margin-bottom: 40px;
 }
 
 
@@ -195,6 +196,15 @@ button:hover {
     padding-top: 20px;
     color: white;
     box-shadow: 2px 2px 2px 3px rgba(0, 0, 0, 0.135);
+    font-size: 18px;
+}
+
+.sidebar a {
+    font-size: 20px;
+}
+
+.sidebar a:hover {
+    text-decoration: underline;
 }
 
 #usuarioInfo{
@@ -259,7 +269,16 @@ hr {
 }
 
 .card p{
-    margin-bottom: 30px
+    margin-bottom: 8%;
+}
+
+@media(min-width: 1450px){
+    .card p {
+        margin-bottom: 20%;
+    }
+    .card {
+        height: 350px;
+    }
 }
 
 .interativeIcons{
@@ -349,18 +368,81 @@ hr {
     }
 }
     
-
-
 .border-bottom{
     width: 100%;
 }
 .card-image{
-    background-image: url(images/pexels-pixabay-60504.jpg);
+    background-image: url(images/seguranca-cibernetica.webp);
     background-position: center center;
     background-size: cover;
     object-fit: cover;
-    height: 150px;
+    height: 180px;
 }
+
+.card-image2{
+    background-image: url(images/privacidade-web.webp);
+    background-position: top center;
+    background-size: cover;
+    object-fit: cover;
+    height: 180px;
+}
+
+.card-image3{
+    background-image: url(images/pshing.webp);
+    background-position: top center;
+    background-size: cover;
+    object-fit: cover;
+    height: 180px;
+}
+
+.card-image4{
+    background-image: url(images/desenvolvimento-web.webp);
+    background-position: top center;
+    background-size: cover;
+    object-fit: cover;
+    height: 180px;
+}
+
+.card-image5{
+    background-image: url(images/redes-computadores.webp);
+    background-position: top center;
+    background-size: cover;
+    object-fit: cover;
+    height: 180px;
+}
+
+.card-image6{
+    background-image: url(images/programacao.webp);
+    background-position: top center;
+    background-size: cover;
+    object-fit: cover;
+    height: 180px;
+}
+
+.card-image7{
+    background-image: url(images/IA.webp);
+    background-position: center center;
+    background-size: cover;
+    object-fit: cover;
+    height: 180px;
+}
+
+.card-image8{
+    background-image: url(images/big-data.webp);
+    background-position: center center;
+    background-size: cover;
+    object-fit: cover;
+    height: 180px;
+}
+
+.card-image9{
+    background-image: url(images/machine-learning.webp);
+    background-position: bottom center;
+    background-size: cover;
+    object-fit: cover;
+    height: 180px;
+}
+
 
 
 footer{
