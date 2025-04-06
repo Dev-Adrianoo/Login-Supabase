@@ -7,10 +7,14 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link rel="stylesheet" href="inicio.css" />
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-
     <style>
       body {
         overflow: hidden;
+      }
+
+      input::placeholder {
+        color: white;
+        opacity: 0.7;
       }
 
     </style>
@@ -18,21 +22,44 @@
   <body>
     <h2 id="mensagemCadastro"></h2>
 
-    <form onsubmit="return false;">
-      <h3>Login Supabase</h3>
-      <label
-        >E-mail
-        <input type="email" id="email" placeholder="E-mail" required />
-      </label>
-      <label>
-        Senha
-        <input type="password" id="senha" placeholder="Password" required />
-      </label>
-      <div class="buttons">
-        <button type="button" onclick="login()">Entrar</button>
-        <button type="button" onclick="cadastrar()">Cadastrar</button>
-      </div>
-    </form>
+    <div class="animate-blop">
+      <svg
+        viewBox="0 0 500 500"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="100%"
+        id="blobSvg"
+      >
+        <path fill="#063D5A" fill-opacity="0.9">
+          <animate
+            attributeName="d"
+            dur="10000ms"
+            repeatCount="indefinite"
+            values="
+          M427.5,358Q375,466,273,426.5Q171,387,95.5,318.5Q20,250,74,144.5Q128,39,244.5,48Q361,57,420.5,153.5Q480,250,427.5,358Z;
+          M387,336.5Q350,423,245.5,431Q141,439,132.5,344.5Q124,250,144,176Q164,102,267,72Q370,42,397,146Q424,250,387,336.5Z;
+          M379.5,325.5Q337,401,232.5,430.5Q128,460,119,355Q110,250,144,188Q178,126,246.5,132Q315,138,368.5,194Q422,250,379.5,325.5Z;
+          M427.5,358Q375,466,273,426.5Q171,387,95.5,318.5Q20,250,74,144.5Q128,39,244.5,48Q361,57,420.5,153.5Q480,250,427.5,358Z;
+          "
+          ></animate>
+        </path>
+      </svg>
+      <form onsubmit="return false;">
+        <h3>Login Supabase</h3>
+        <label
+          >E-mail
+          <input type="email" id="email" placeholder="E-mail" required />
+        </label>
+        <label>
+          Senha
+          <input type="password" id="senha" placeholder="Password" required />
+        </label>
+        <div class="buttons">
+          <button type="button" onclick="login()">Entrar</button>
+          <button type="button" onclick="cadastrar()">Cadastrar</button>
+        </div>
+      </form>
+    </div>
 
     <footer>
       &copy; 2025 Deivid, Mateus, Kaike, Adriano, Todos os direitos reservados!
@@ -64,7 +91,7 @@
             "Erro: " + error.message;
         } else {
           document.getElementById("mensagemCadastro").innerText =
-            "Login realizado com sucesso!"
+            "Login realizado com sucesso!";
           localStorage.setItem("usuarioEmail", email);
 
           alert(localStorage.getItem("usuarioEmail"));
@@ -72,7 +99,6 @@
             window.location.href = "bem-vindo.html";
           }, 2000);
         }
-
       }
 
       async function cadastrar() {

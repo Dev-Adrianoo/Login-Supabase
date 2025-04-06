@@ -8,7 +8,6 @@
       href="https://cdn.jsdelivr.net/npm/@iconscout/unicons/css/line.css"
       rel="stylesheet"
     />
-    <script type="module" src="script.js"></script>
     <title>Bem-vindo</title>
   </head>
   <body class="body-2">
@@ -16,7 +15,7 @@
       <input
         type="text"
         class="Search"
-        placeholder="Pesquisar"
+        placeholder="Pesquisar..."
         id="SearchBar"
         onkeyup="filtrarItens()"
       />
@@ -26,7 +25,34 @@
       <div class="sidebar">
         <div class="imageDivPai">
           <div id="usuarioInfo" class="usuario-info">
-            <img class="imagem-perfil" src="images/foto-perfil.jpg" loading="lazy" />
+            <div class="animate-blop2">
+              <svg
+                viewBox="0 0 500 500"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                width="100%"
+                id="blobSvg"
+              >
+                <path fill="#FFFFFF">
+                  <animate
+                    attributeName="d"
+                    dur="10000ms"
+                    repeatCount="indefinite"
+                    values="
+                  M427.5,358Q375,466,273,426.5Q171,387,95.5,318.5Q20,250,74,144.5Q128,39,244.5,48Q361,57,420.5,153.5Q480,250,427.5,358Z;
+                  M387,336.5Q350,423,245.5,431Q141,439,132.5,344.5Q124,250,144,176Q164,102,267,72Q370,42,397,146Q424,250,387,336.5Z;
+                  M379.5,325.5Q337,401,232.5,430.5Q128,460,119,355Q110,250,144,188Q178,126,246.5,132Q315,138,368.5,194Q422,250,379.5,325.5Z;
+                  M427.5,358Q375,466,273,426.5Q171,387,95.5,318.5Q20,250,74,144.5Q128,39,244.5,48Q361,57,420.5,153.5Q480,250,427.5,358Z;
+                  "
+                  ></animate>
+                </path>
+              </svg>
+            </div>
+            <img
+              class="imagem-perfil"
+              src="images/foto-perfil.jpg"
+              loading="lazy"
+            />
             <p>Adriano Souza</p>
             <h2 id="mensagem">Carregando...</h2>
           </div>
@@ -34,7 +60,7 @@
           <ul class="list-topics">
             <li><a href="#">Início</a></li>
             <li><a href="#">Perfil</a></li>
-            <li><a href="#">Configurações</a></li>
+            <li><a href="#"></a>config</li>
             <li><a href="#">Ajuda</a></li>
             <li><a href="#" onclick="logout()">Sair</a></li>
           </ul>
@@ -42,12 +68,12 @@
       </div>
       <div class="cards-container">
         <div class="card">
-          <div class="card-image" loading="lazy" ></div>
+          <div class="card-image" loading="lazy"></div>
           <h2>Segurança Cibernética</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
             <span>
-              <img src="images/coracao.png" class="heart-icon" data-id="1"  />
+              <img src="images/coracao.png" class="heart-icon" data-id="1" />
             </span>
             <span>
               <img src="images/comente.png" id="" />
@@ -62,13 +88,38 @@
               <h2>Segurança Cibernética</h2>
               <p>
                 Detalhes sobre segurança cibernética: proteção contra ataques
-                digitais e mais.
+                digitais e mais. Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Saepe excepturi itaque quia quibusdam
+                consectetur ratione nam, fugit obcaecati eveniet culpa at
+                laboriosam necessitatibus dignissimos beatae delectus tempore!
+                Similique, doloremque sequi?Lorem ipsum dolor sit amet
+                consectetur adipisicing elit. Tempore nemo, sequi fuga ad magni
+                neque amet similique ex itaque officiis voluptatum consequatur
+                temporibus laudantium sint corrupti incidunt aspernatur
+                recusandae officia.lorem
               </p>
+              <div class="comentarios">
+                <h3>Comentários</h3>
+                <div class="lista-comentarios" id="comentarios-list-1"></div>
+                <textarea
+                  name=""
+                  id="comentarioInput-1"
+                  placeholder="Digite seu Comentário..."
+                ></textarea>
+                <div class="comentario-container">
+                  <button class="btnSubmit" onclick="enviarComentario(1)">Enviar</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         <div class="card">
-          <div class="card-image2" loading="lazy"></div>
+          <div class="card-image" loading="lazy">
+            <img
+              src="images/privacidade-web.webp"
+              alt="imagem-privacidade-web"
+            />
+          </div>
           <h2>Privacidade Web</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
@@ -94,7 +145,9 @@
           </div>
         </div>
         <div class="card">
-          <div class="card-image3" loading="lazy" ></div>
+          <div class="card-image" loading="lazy">
+            <img src="images/pshing.webp" alt="pshing-image" />
+          </div>
           <h2>Phishing</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
@@ -120,7 +173,12 @@
           </div>
         </div>
         <div class="card">
-          <div class="card-image4" loading="lazy"></div>
+          <div class="card-image" loading="lazy">
+            <img
+              src="images/desenvolvimento-web.webp"
+              alt="desenvolvimento-web"
+            />
+          </div>
           <h2>Desenvolvimento Web</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
@@ -146,7 +204,9 @@
           </div>
         </div>
         <div class="card">
-          <div class="card-image5" loading="lazy" ></div>
+          <div class="card-image" loading="lazy">
+            <img src="images/redes-computadores.webp" alt="" />
+          </div>
           <h2>Redes de Computadores</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
@@ -172,7 +232,9 @@
           </div>
         </div>
         <div class="card">
-          <div class="card-image6" loading="lazy" ></div>
+          <div class="card-image" loading="lazy">
+            <img src="images/programacao.webp" alt="imagem programação" />
+          </div>
           <h2>Programação</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
@@ -195,7 +257,9 @@
           </div>
         </div>
         <div class="card">
-          <div class="card-image7" loading="lazy"></div>
+          <div class="card-image" loading="lazy">
+            <img src="images/IA.webp" alt="" />
+          </div>
           <h2>Inteligência Artificial</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
@@ -220,8 +284,10 @@
             </div>
           </div>
         </div>
-        <!-- <div class="card">
-          <div class="card-image8" loading="lazy"></div>
+        <div class="card">
+          <div class="card-image" loading="lazy">
+            <img src="images/big-data.webp" alt="imagem big Data" />
+          </div>
           <h2>Big Data</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
@@ -244,9 +310,11 @@
               </p>
             </div>
           </div>
-        </div> -->
+        </div>
         <div class="card">
-          <div class="card-image9" loading="lazy"></div>
+          <div class="card-image" loading="lazy">
+            <img src="images/machine-learning.webp" alt="machine-learning" />
+          </div>
           <h2>Machine Learning</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
@@ -309,25 +377,58 @@
       window.location.href = "cadastro.html";
     }
 
+    let timeoutId = null;
+
     function filtrarItens() {
-      const filtro = document.getElementById("SearchBar").value.toLowerCase();
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
 
-      const cards = document.querySelectorAll(".card");
+      timeoutId = setTimeout(() => {
+        const filtro = document.getElementById("SearchBar").value.toLowerCase();
+        const cards = document.querySelectorAll(".card");
 
-      cards.forEach((card) => {
-        const titulo = card.querySelector("h2").textContent.toLowerCase();
-
-        if (titulo.includes(filtro)) {
-          card.style.display = "";
-        } else {
-          card.style.display = "none";
+        if (!document.getElementById("filter-style")) {
+          const style = document.createElement("style");
+          style.id = "filter-style";
+          style.innerHTML = ".card-hidden { display: none !important; }";
+          document.head.appendChild(style);
         }
-      });
+
+        let updates = [];
+
+        cards.forEach((card) => {
+          const titulo = card.querySelector("h2").textContent.toLowerCase();
+          const shouldBeVisible = titulo.includes(filtro);
+
+          updates.push({
+            element: card,
+            makeVisible: shouldBeVisible,
+          });
+        });
+
+        requestAnimationFrame(() => {
+          updates.forEach((update) => {
+            if (update.makeVisible) {
+              update.element.classList.remove("card-hidden");
+            } else {
+              update.element.classList.add("card-hidden");
+            }
+          });
+        });
+      }, 300);
     }
+
+    document
+      .getElementById("SearchBar")
+      .addEventListener("input", filtrarItens);
 
     function abrirModal(modalId) {
       const modal = document.getElementById(modalId);
       modal.style.display = "flex";
+
+      const id = modalId.split("-")[1];
+      carregarComentarios(id);
     }
 
     function fecharModal(modalId) {
@@ -336,6 +437,7 @@
     }
 
     const cards = document.querySelectorAll(".card");
+
     cards.forEach((card, index) => {
       card.addEventListener("click", (event) => {
         if (!event.target.classList.contains("close")) {
@@ -343,5 +445,59 @@
         }
       });
     });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const cardsContainer = document.querySelector(".cards-container");
+      const cards = document.querySelectorAll(".card");
+
+      cards.forEach((card) => {
+        card.addEventListener("mouseenter", function () {
+          cardsContainer.classList.add("card-being-hovered");
+
+          this.classList.add("card-hovered");
+        });
+
+        card.addEventListener("mouseleave", function () {
+          cardsContainer.classList.remove("card-being-hovered");
+
+          this.classList.remove("card-hovered");
+        });
+      });
+    });
+
+    function enviarComentario(id) {
+      const input = document.getElementById(`comentarioInput-${id}`);
+      const lista = document.getElementById(`comentarios-list-${id}`);
+      const texto = input.value.trim();
+
+      if (texto !== "") {
+        const comentarioDiv = document.createElement("div");
+        comentarioDiv.classList.add("comentario");
+        comentarioDiv.textContent = texto;
+        lista.appendChild(comentarioDiv);
+
+        const chave = `comentarios-${id}`;
+        const comentariosSalvos = JSON.parse(localStorage.getItem(chave) || "[]");
+        comentariosSalvos.push(texto);
+        localStorage.setItem(chave, JSON.stringify(comentariosSalvos))
+
+        input.value = "";
+      }
+    }
+    function carregarComentarios(id) {
+  const lista = document.getElementById(`comentarios-list-${id}`);
+  const chave = `comentarios-${id}`;
+  const comentariosSalvos = JSON.parse(localStorage.getItem(chave) || "[]");
+
+ 
+  lista.innerHTML = "";
+
+  comentariosSalvos.forEach((comentario) => {
+    const comentarioDiv = document.createElement("div");
+    comentarioDiv.classList.add("comentario");
+    comentarioDiv.textContent = comentario;
+    lista.appendChild(comentarioDiv);
+  });
+}
   </script>
 </html>
