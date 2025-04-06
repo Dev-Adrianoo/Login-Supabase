@@ -67,53 +67,47 @@
         </div>
       </div>
       <div class="cards-container">
-        <div class="card">
+        <div class="card" onclick="abrirModal('modal-1')">
           <div class="card-image" loading="lazy"></div>
           <h2>Segurança Cibernética</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
-            <span>
-              <img src="images/coracao.png" class="heart-icon" data-id="1" />
+            <span
+              ><img src="images/coracao.png" class="heart-icon" data-id="1" />
             </span>
-            <span>
-              <img src="images/comente.png" id="" />
+            
+            <span >
+              <img src="images/comente.png" />
             </span>
-            <span>
-              <img src="images/mail-send.png" />
-            </span>
+            <span><img src="images/mail-send.png" /></span>
           </div>
-          <div id="modal-1" class="modal">
-            <div class="modal-content">
-              <span class="close" onclick="fecharModal('modal-1')">X</span>
-              <h2>Segurança Cibernética</h2>
-              <p>
-                Detalhes sobre segurança cibernética: proteção contra ataques
-                digitais e mais. Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Saepe excepturi itaque quia quibusdam
-                consectetur ratione nam, fugit obcaecati eveniet culpa at
-                laboriosam necessitatibus dignissimos beatae delectus tempore!
-                Similique, doloremque sequi?Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Tempore nemo, sequi fuga ad magni
-                neque amet similique ex itaque officiis voluptatum consequatur
-                temporibus laudantium sint corrupti incidunt aspernatur
-                recusandae officia.lorem
-              </p>
-              <div class="comentarios">
-                <h3>Comentários</h3>
-                <div class="lista-comentarios" id="comentarios-list-1"></div>
-                <textarea
-                  name=""
-                  id="comentarioInput-1"
-                  placeholder="Digite seu Comentário..."
-                ></textarea>
-                <div class="comentario-container">
-                  <button class="btnSubmit" onclick="enviarComentario(1)">Enviar</button>
-                </div>
+        </div>
+        <div id="modal-1" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="fecharModal('modal-1')">X</span>
+            <h2>Segurança Cibernética</h2>
+            <p>
+              Detalhes sobre segurança cibernética: proteção contra ataques
+              digitais e mais. Lorem ipsum dolor sit amet consectetur
+              adipisicing elit...
+            </p>
+
+            <div class="comentarios">
+              <h3>Comentários</h3>
+              <div class="lista-comentarios" id="comentarios-list-1"></div>
+              <textarea
+                id="comentarioInput-1"
+                placeholder="Digite seu Comentário..."
+              ></textarea>
+              <div class="comentario-container">
+                <button class="btnSubmit" onclick="enviarComentario(1)">
+                  Enviar
+                </button>
               </div>
             </div>
           </div>
         </div>
-        <div class="card">
+        <div class="card" onclick="abrirModal('modal-2')">
           <div class="card-image" loading="lazy">
             <img
               src="images/privacidade-web.webp"
@@ -123,56 +117,80 @@
           <h2>Privacidade Web</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
-            <span>
-              <img src="images/coracao.png" class="heart-icon" data-id="2" />
-            </span>
-            <span>
-              <img src="images/comente.png" id="" />
-            </span>
-            <span>
-              <img src="images/mail-send.png" />
-            </span>
+            <span
+              ><img src="images/coracao.png" class="heart-icon" data-id="2"
+            /></span>
+            <span><img src="images/comente.png" /></span>
+            <span><img src="images/mail-send.png" /></span>
           </div>
-          <div id="modal-2" class="modal">
-            <div class="modal-content">
-              <span class="close" onclick="fecharModal('modal-2')">X</span>
-              <h2>Privacidade Web</h2>
-              <p>
-                Detalhes sobre privacidade na web: como proteger seus dados
-                online.
-              </p>
+        </div>
+
+        <div id="modal-2" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="fecharModal('modal-2')">X</span>
+            <h2>Privacidade Web</h2>
+            <p>
+              Detalhes sobre privacidade na web: como proteger seus dados
+              online.
+            </p>
+
+            <div class="comentarios">
+              <h3>Comentários</h3>
+              <div class="lista-comentarios" id="comentarios-list-2"></div>
+              <textarea
+                id="comentarioInput-2"
+                placeholder="Digite seu Comentário..."
+              ></textarea>
+              <div class="comentario-container">
+                <button class="btnSubmit" onclick="enviarComentario(2)">
+                  Enviar
+                </button>
+              </div>
             </div>
           </div>
         </div>
-        <div class="card">
+
+        <div class="card" onclick="abrirModal('modal-3')">
           <div class="card-image" loading="lazy">
             <img src="images/pshing.webp" alt="pshing-image" />
           </div>
           <h2>Phishing</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
-            <span>
-              <img src="images/coracao.png" class="heart-icon" data-id="3" />
-            </span>
-            <span>
-              <img src="images/comente.png" id="" />
-            </span>
-            <span>
-              <img src="images/mail-send.png" />
-            </span>
+            <span
+              ><img src="images/coracao.png" class="heart-icon" data-id="3"
+            /></span>
+            <span><img src="images/comente.png" /></span>
+            <span><img src="images/mail-send.png" /></span>
           </div>
-          <div id="modal-3" class="modal">
-            <div class="modal-content">
-              <span class="close" onclick="fecharModal('modal-3')">X</span>
-              <h2>Phishing: Cuidado com Golpes</h2>
-              <p>
-                Golpes por e-mail e mensagens são comuns. Aprenda a reconhecer e
-                evitar ataques de phishing.
-              </p>
+        </div>
+
+        <div id="modal-3" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="fecharModal('modal-3')">X</span>
+            <h2>Phishing</h2>
+            <p>
+              Detalhes sobre phishing: técnicas usadas por hackers para enganar
+              usuários e roubar informações pessoais.
+            </p>
+
+            <div class="comentarios">
+              <h3>Comentários</h3>
+              <div class="lista-comentarios" id="comentarios-list-3"></div>
+              <textarea
+                id="comentarioInput-3"
+                placeholder="Digite seu Comentário..."
+              ></textarea>
+              <div class="comentario-container">
+                <button class="btnSubmit" onclick="enviarComentario(3)">
+                  Enviar
+                </button>
+              </div>
             </div>
           </div>
         </div>
-        <div class="card">
+
+        <div class="card" onclick="abrirModal('modal-4')">
           <div class="card-image" loading="lazy">
             <img
               src="images/desenvolvimento-web.webp"
@@ -186,52 +204,83 @@
               <img src="images/coracao.png" class="heart-icon" data-id="4" />
             </span>
             <span>
-              <img src="images/comente.png" id="" />
+              <img src="images/comente.png" />
             </span>
             <span>
               <img src="images/mail-send.png" />
             </span>
           </div>
-          <div id="modal-4" class="modal">
-            <div class="modal-content">
-              <span class="close" onclick="fecharModal('modal-4')">X</span>
-              <h2>Desenvolvimento Web</h2>
-              <p>
-                Detalhes sobre desenvolvimento web: HTML, CSS, JavaScript e
-                mais.
-              </p>
+        </div>
+
+        <div id="modal-4" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="fecharModal('modal-4')">X</span>
+            <h2>Desenvolvimento Web</h2>
+            <p>
+              Detalhes sobre desenvolvimento web: HTML, CSS, JavaScript e mais.
+            </p>
+            <div class="comentarios">
+              <h3>Comentários</h3>
+              <div class="lista-comentarios" id="comentarios-list-4"></div>
+              <textarea
+                id="comentarioInput-4"
+                placeholder="Digite seu Comentário..."
+              ></textarea>
+              <div class="comentario-container">
+                <button class="btnSubmit" onclick="enviarComentario(4)">
+                  Enviar
+                </button>
+              </div>
             </div>
           </div>
         </div>
-        <div class="card">
+
+        <div class="card" onclick="abrirModal('modal-5')">
           <div class="card-image" loading="lazy">
-            <img src="images/redes-computadores.webp" alt="" />
+            <img
+              src="images/redes-computadores.webp"
+              alt="redes-computadores"
+            />
           </div>
           <h2>Redes de Computadores</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
             <span>
-              <img src="images/coracao.png" class="heart-icon" data-id="6" />
+              <img src="images/coracao.png" class="heart-icon" data-id="5" />
             </span>
             <span>
-              <img src="images/comente.png" id="" />
+              <img src="images/comente.png" />
             </span>
             <span>
               <img src="images/mail-send.png" />
             </span>
           </div>
-          <div id="modal-5" class="modal">
-            <div class="modal-content">
-              <span class="close" onclick="fecharModal('modal-5')">X</span>
-              <h2>Redes de Computadores</h2>
-              <p>
-                Detalhes sobre redes de computadores: protocolos e
-                infraestrutura.
-              </p>
+        </div>
+
+        <div id="modal-5" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="fecharModal('modal-5')">X</span>
+            <h2>Redes de Computadores</h2>
+            <p>
+              Detalhes sobre redes de computadores: protocolos e infraestrutura.
+            </p>
+            <div class="comentarios">
+              <h3>Comentários</h3>
+              <div class="lista-comentarios" id="comentarios-list-5"></div>
+              <textarea
+                id="comentarioInput-5"
+                placeholder="Digite seu Comentário..."
+              ></textarea>
+              <div class="comentario-container">
+                <button class="btnSubmit" onclick="enviarComentario(5)">
+                  Enviar
+                </button>
+              </div>
             </div>
           </div>
         </div>
-        <div class="card">
+
+        <div class="card" onclick="abrirModal('modal-6')">
           <div class="card-image" loading="lazy">
             <img src="images/programacao.webp" alt="imagem programação" />
           </div>
@@ -239,100 +288,171 @@
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
             <span>
-              <img src="images/coracao.png" class="heart-icon" data-id="8" />
+              <img src="images/coracao.png" class="heart-icon" data-id="6" />
             </span>
             <span>
-              <img src="images/comente.png" id="" />
+              <img src="images/comente.png" />
             </span>
             <span>
               <img src="images/mail-send.png" />
             </span>
           </div>
-          <div id="modal-6" class="modal">
-            <div class="modal-content">
-              <span class="close" onclick="fecharModal('modal-6')">X</span>
-              <h2>Programação</h2>
-              <p>Detalhes sobre programação: linguagens e lógica de código.</p>
+        </div>
+
+        <div id="modal-6" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="fecharModal('modal-6')">X</span>
+            <h2>Programação</h2>
+            <p>Detalhes sobre programação: linguagens e lógica de código.</p>
+            <div class="comentarios">
+              <h3>Comentários</h3>
+              <div class="lista-comentarios" id="comentarios-list-6"></div>
+              <textarea
+                id="comentarioInput-6"
+                placeholder="Digite seu Comentário..."
+              ></textarea>
+              <div class="comentario-container">
+                <button class="btnSubmit" onclick="enviarComentario(6)">
+                  Enviar
+                </button>
+              </div>
             </div>
           </div>
         </div>
-        <div class="card">
+
+        <div class="card" onclick="abrirModal('modal-7')">
           <div class="card-image" loading="lazy">
-            <img src="images/IA.webp" alt="" />
+            <img src="images/IA.webp" alt="Inteligência Artificial" />
           </div>
           <h2>Inteligência Artificial</h2>
+          <p>Lorem ipsum dolor sit amet consectetur...</p>
+          <div class="interativeIcons">
+            <span>
+              <img src="images/coracao.png" class="heart-icon" data-id="7" />
+            </span>
+            <span>
+              <img src="images/comente.png" />
+            </span>
+            <span>
+              <img src="images/mail-send.png" />
+            </span>
+          </div>
+        </div>
+
+        <div id="modal-7" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="fecharModal('modal-7')">X</span>
+            <h2>Inteligência Artificial</h2>
+            <p>
+              Detalhes sobre inteligência artificial: aprendizado de máquina e
+              mais.
+            </p>
+            <div class="comentarios">
+              <h3>Comentários</h3>
+              <div class="lista-comentarios" id="comentarios-list-7"></div>
+              <textarea
+                id="comentarioInput-7"
+                placeholder="Digite seu Comentário..."
+              ></textarea>
+              <div class="comentario-container">
+                <button class="btnSubmit" onclick="enviarComentario(7)">
+                  Enviar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" onclick="abrirModal('modal-8')">
+          <div class="card-image" loading="lazy">
+            <img src="images/big-data.webp" alt="Big Data" />
+          </div>
+          <h2>Big Data</h2>
+          <p>Lorem ipsum dolor sit amet consectetur...</p>
+          <div class="interativeIcons">
+            <span>
+              <img src="images/coracao.png" class="heart-icon" data-id="8" />
+            </span>
+            <span>
+              <img src="images/comente.png" />
+            </span>
+            <span>
+              <img src="images/mail-send.png" />
+            </span>
+          </div>
+        </div>
+
+        <div id="modal-8" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="fecharModal('modal-8')">X</span>
+            <h2>Big Data</h2>
+            <p>Detalhes sobre big data: análise de grandes volumes de dados.</p>
+            <div class="comentarios">
+              <h3>Comentários</h3>
+              <div class="lista-comentarios" id="comentarios-list-8"></div>
+              <textarea
+                id="comentarioInput-8"
+                placeholder="Digite seu Comentário..."
+              ></textarea>
+              <div class="comentario-container">
+                <button class="btnSubmit" onclick="enviarComentario(8)">
+                  Enviar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" onclick="abrirModal('modal-9')">
+          <div class="card-image" loading="lazy">
+            <img src="images/machine-learning.webp" alt="Machine Learning" />
+          </div>
+          <h2>Machine Learning</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
             <span>
               <img src="images/coracao.png" class="heart-icon" data-id="9" />
             </span>
             <span>
-              <img src="images/comente.png" id="" />
+              <img src="images/comente.png" />
             </span>
             <span>
               <img src="images/mail-send.png" />
             </span>
-          </div>
-          <div id="modal-7" class="modal">
-            <div class="modal-content">
-              <span class="close" onclick="fecharModal('modal-7')">X</span>
-              <h2>Inteligência Artificial</h2>
-              <p>
-                Detalhes sobre inteligência artificial: aprendizado de máquina e
-                mais.
-              </p>
-            </div>
           </div>
         </div>
-        <div class="card">
-          <div class="card-image" loading="lazy">
-            <img src="images/big-data.webp" alt="imagem big Data" />
-          </div>
-          <h2>Big Data</h2>
-          <p>Lorem ipsum dolor sit amet consectetur...</p>
-          <div class="interativeIcons">
-            <span>
-              <img src="images/coracao.png" class="heart-icon" data-id="11" />
-            </span>
-            <span>
-              <img src="images/comente.png" id="" />
-            </span>
-            <span>
-              <img src="images/mail-send.png" />
-            </span>
-          </div>
-          <div id="modal-8" class="modal">
-            <div class="modal-content">
-              <span class="close" onclick="fecharModal('modal-8')">X</span>
-              <h2>Big Data</h2>
-              <p>
-                Detalhes sobre big data: análise de grandes volumes de dados.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-image" loading="lazy">
-            <img src="images/machine-learning.webp" alt="machine-learning" />
-          </div>
-          <h2>Machine Learning</h2>
-          <p>Lorem ipsum dolor sit amet consectetur...</p>
-          <div class="interativeIcons">
-            <span>
-              <img src="images/coracao.png" class="heart-icon" data-id="12" />
-            </span>
-            <span>
-              <img src="images/comente.png" id="" />
-            </span>
-            <span>
-              <img src="images/mail-send.png" />
-            </span>
-          </div>
-          <div id="modal-9" class="modal">
-            <div class="modal-content">
-              <span class="close" onclick="fecharModal('modal-9')">X</span>
-              <h2>Machine Learning</h2>
-              <p>Detalhes sobre machine learning: algoritmos e aplicações.</p>
+
+        <div id="modal-9" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="fecharModal('modal-9')">X</span>
+            <h2>Machine Learning</h2>
+            <p>Detalhes sobre machine learning: algoritmos e aplicações.</p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias,
+            eligendi placeat, laboriosam asperiores numquam molestiae voluptate
+            eius nam recusandae dolorum eaque at ut deleniti molestias in. Sint,
+            unde. Molestiae, enim! Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Deserunt fuga sint, voluptate possimus labore
+            ducimus quod reiciendis ipsam nesciunt asperiores harum quos
+            cupiditate assumenda est aliquid dolores vero, nobis culpa! Lorem
+            ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem porro
+            tempore est quos ullam explicabo, beatae officiis maiores sed quae
+            dicta excepturi earum veritatis enim aliquid totam dolorem et
+            cumque! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut
+            ratione, veniam repellat qui quibusdam numquam natus saepe fuga
+            ducimus! Dolor iure aliquid eius suscipit ut minima accusamus
+            maiores quibusdam fuga.
+            <div class="comentarios">
+              <h3>Comentários</h3>
+              <div class="lista-comentarios" id="comentarios-list-9"></div>
+              <textarea
+                id="comentarioInput-9"
+                placeholder="Digite seu Comentário..."
+              ></textarea>
+              <div class="comentario-container">
+                <button class="btnSubmit" onclick="enviarComentario(9)">
+                  Enviar
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -341,6 +461,22 @@
   </body>
   <script defer>
     const heartIcons = document.querySelectorAll(".heart-icon");
+    
+    // heartIcons.forEach(heart => {
+
+    //   heart.addEventListener('click', () => {
+    //     const constSpan = heart.nextElementSibling()
+    //     let count = parseInt(countSpan.textContent);
+
+    //     if(heart.classList.contains('liked')){
+    //       count--;
+    //     }else {
+    //       count ++;
+    //     }
+        
+    //     countSpan.textContent = count;
+    //   })
+    // });
 
     heartIcons.forEach((icon) => {
       const id = icon.getAttribute("data-id");
@@ -425,7 +561,14 @@
 
     function abrirModal(modalId) {
       const modal = document.getElementById(modalId);
+      const modalContent = modal.querySelector(".modal-content");
+
       modal.style.display = "flex";
+
+      setTimeout(() => {
+        modalContent.style.transform = "scale(1)";
+        modalContent.style.opacity = "1";
+      }, 10);
 
       const id = modalId.split("-")[1];
       carregarComentarios(id);
@@ -433,8 +576,23 @@
 
     function fecharModal(modalId) {
       const modal = document.getElementById(modalId);
-      modal.style.display = "none";
+      const modalContent = modal.querySelector(".modal-content");
+
+      modalContent.style.transform = "scale(0.8)";
+      modalContent.style.opacity = "0";
+
+      setTimeout(() => {
+        modal.style.display = "none";
+      }, 300);
     }
+
+    document.querySelectorAll(".modal").forEach((modal) => {
+      modal.addEventListener("click", function (event) {
+        if (event.target === modal) {
+          fecharModal(modal.id);
+        }
+      });
+    });
 
     const cards = document.querySelectorAll(".card");
 
@@ -477,27 +635,29 @@
         lista.appendChild(comentarioDiv);
 
         const chave = `comentarios-${id}`;
-        const comentariosSalvos = JSON.parse(localStorage.getItem(chave) || "[]");
+        const comentariosSalvos = JSON.parse(
+          localStorage.getItem(chave) || "[]"
+        );
         comentariosSalvos.push(texto);
-        localStorage.setItem(chave, JSON.stringify(comentariosSalvos))
+        localStorage.setItem(chave, JSON.stringify(comentariosSalvos));
 
         input.value = "";
       }
     }
+
     function carregarComentarios(id) {
-  const lista = document.getElementById(`comentarios-list-${id}`);
-  const chave = `comentarios-${id}`;
-  const comentariosSalvos = JSON.parse(localStorage.getItem(chave) || "[]");
+      const lista = document.getElementById(`comentarios-list-${id}`);
+      const chave = `comentarios-${id}`;
+      const comentariosSalvos = JSON.parse(localStorage.getItem(chave) || "[]");
 
- 
-  lista.innerHTML = "";
+      lista.innerHTML = "";
 
-  comentariosSalvos.forEach((comentario) => {
-    const comentarioDiv = document.createElement("div");
-    comentarioDiv.classList.add("comentario");
-    comentarioDiv.textContent = comentario;
-    lista.appendChild(comentarioDiv);
-  });
-}
+      comentariosSalvos.forEach((comentario) => {
+        const comentarioDiv = document.createElement("div");
+        comentarioDiv.classList.add("comentario");
+        comentarioDiv.textContent = comentario;
+        lista.appendChild(comentarioDiv);
+      });
+    }
   </script>
 </html>
