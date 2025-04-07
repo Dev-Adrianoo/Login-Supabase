@@ -53,7 +53,7 @@
               src="images/foto-perfil.jpg"
               loading="lazy"
             />
-            <p>Adriano Souza</p>
+            <p id="nomeCompleto"></p>
             <h2 id="mensagem">Carregando...</h2>
           </div>
           <hr />
@@ -480,8 +480,25 @@
     </div>
   </body>
   <script defer>
-    const heartIcons = document.querySelectorAll(".heart-icon");
+    
+    const usuarioEmail = localStorage.getItem("usuarioEmail");
 
+    document.getElementById("mensagem").innerText =
+      usuarioEmail || "Usuário não autenticado!";
+
+    const nomeEmail = usuarioEmail ? usuarioEmail.split("@")[0] : ""
+
+    const nomes = nomeEmail.split(/[.\-_]/);
+
+    const primeiroNome = nomes[0] || '';
+    const segundoNome = nomes[1] || '';
+
+    const nomeCompleto  = (primeiroNome + ' ' + segundoNome).trim()
+
+    document.getElementById("nomeCompleto").innerHTML = nomeCompleto || "Nome não encontrado!"
+    
+    const heartIcons = document.querySelectorAll(".heart-icon");
+    
     function likeCount(event) {
       const heartIcon = event.target;
       const likeCountSpan = heartIcon.nextElementSibling;
@@ -489,7 +506,7 @@
       count += 1;
       likeCountSpan.textContent = count;
     }
-
+    
     heartIcons.forEach((icon) => {
       const id = icon.getAttribute("data-id");
       const isLiked = localStorage.getItem(`like-${id}`);
@@ -516,9 +533,6 @@
       });
     });
 
-    const usuarioEmail = localStorage.getItem("usuarioEmail");
-    document.getElementById("mensagem").innerText =
-      usuarioEmail || "Usuário não autenticado!";
 
     function logout() {
       localStorage.removeItem("usuarioEmail");
