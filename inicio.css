@@ -327,15 +327,22 @@ hr {
 
 
 .card p{
-    margin-bottom: 8%;
+    margin-bottom: 3%;
+}
+
+.card h2 {
+    margin: 5px;
 }
 
 @media(min-width: 1450px){
     .card p {
-        margin-bottom: 20%;
+        margin-bottom: 10%;
     }
     .card {
         height: 350px;
+    }
+    .card h2{
+        margin: 10px;
     }
 }
 
@@ -346,6 +353,13 @@ hr {
     position: absolute;
     padding: 5px;
     width: calc(100% - 35px);
+}
+
+.interativeIcons .spanCount{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
 }
 
 .interativeIcons img {
@@ -359,7 +373,7 @@ hr {
 
 .modal {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -378,7 +392,7 @@ hr {
     padding: 20px;
     border-radius: 4px;
     width: 800px;
-    height: 60vh;
+    height: 65vh;
     overflow-y: auto;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
     position: relative;

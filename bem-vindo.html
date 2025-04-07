@@ -72,11 +72,17 @@
           <h2>Segurança Cibernética</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
-            <span
-              ><img src="images/coracao.png" class="heart-icon" data-id="1" />
+            <span class="spanCount">
+              <img
+                src="images/coracao.png"
+                onclick="likeCount(event)"
+                class="heart-icon"
+                data-id="1"
+              />
+              <span class="like-count">0</span>
             </span>
-            
-            <span >
+
+            <span>
               <img src="images/comente.png" />
             </span>
             <span><img src="images/mail-send.png" /></span>
@@ -101,7 +107,7 @@
               ></textarea>
               <div class="comentario-container">
                 <button class="btnSubmit" onclick="enviarComentario(1)">
-                  Enviar
+                  Comentar
                 </button>
               </div>
             </div>
@@ -117,9 +123,15 @@
           <h2>Privacidade Web</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
-            <span
-              ><img src="images/coracao.png" class="heart-icon" data-id="2"
-            /></span>
+            <span class="spanCount"
+              ><img
+                src="images/coracao.png"
+                onclick="likeCount(event)"
+                class="heart-icon"
+                data-id="2"
+              />
+              <span class="like-count">0</span>
+            </span>
             <span><img src="images/comente.png" /></span>
             <span><img src="images/mail-send.png" /></span>
           </div>
@@ -143,7 +155,7 @@
               ></textarea>
               <div class="comentario-container">
                 <button class="btnSubmit" onclick="enviarComentario(2)">
-                  Enviar
+                  Comentar
                 </button>
               </div>
             </div>
@@ -157,9 +169,11 @@
           <h2>Phishing</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
-            <span
-              ><img src="images/coracao.png" class="heart-icon" data-id="3"
-            /></span>
+            <span class="spanCount">
+              <img src="images/coracao.png" onclick="likeCount(event)" class="heart-icon" data-id="3" />
+              <span class="like-count">0</span>
+              </span
+            >
             <span><img src="images/comente.png" /></span>
             <span><img src="images/mail-send.png" /></span>
           </div>
@@ -183,7 +197,7 @@
               ></textarea>
               <div class="comentario-container">
                 <button class="btnSubmit" onclick="enviarComentario(3)">
-                  Enviar
+                  Comentar
                 </button>
               </div>
             </div>
@@ -200,8 +214,9 @@
           <h2>Desenvolvimento Web</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
-            <span>
-              <img src="images/coracao.png" class="heart-icon" data-id="4" />
+            <span class="spanCount">
+              <img src="images/coracao.png" onclick="likeCount(event)" class="heart-icon" data-id="4" />
+              <span class="like-count">0</span>
             </span>
             <span>
               <img src="images/comente.png" />
@@ -228,7 +243,7 @@
               ></textarea>
               <div class="comentario-container">
                 <button class="btnSubmit" onclick="enviarComentario(4)">
-                  Enviar
+                  Comentar
                 </button>
               </div>
             </div>
@@ -245,8 +260,9 @@
           <h2>Redes de Computadores</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
-            <span>
-              <img src="images/coracao.png" class="heart-icon" data-id="5" />
+            <span class="spanCount">
+              <img src="images/coracao.png" onclick="likeCount(event)" class="heart-icon" data-id="5" />
+              <span class="like-count">0</span>
             </span>
             <span>
               <img src="images/comente.png" />
@@ -273,7 +289,7 @@
               ></textarea>
               <div class="comentario-container">
                 <button class="btnSubmit" onclick="enviarComentario(5)">
-                  Enviar
+                  Comentar
                 </button>
               </div>
             </div>
@@ -287,8 +303,9 @@
           <h2>Programação</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
-            <span>
-              <img src="images/coracao.png" class="heart-icon" data-id="6" />
+            <span class="spanCount">
+              <img src="images/coracao.png" onclick="likeCount(event)" class="heart-icon" data-id="6" />
+              <span class="like-count">0</span>
             </span>
             <span>
               <img src="images/comente.png" />
@@ -313,7 +330,7 @@
               ></textarea>
               <div class="comentario-container">
                 <button class="btnSubmit" onclick="enviarComentario(6)">
-                  Enviar
+                  Comentar
                 </button>
               </div>
             </div>
@@ -327,8 +344,9 @@
           <h2>Inteligência Artificial</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
-            <span>
-              <img src="images/coracao.png" class="heart-icon" data-id="7" />
+            <span class="spanCount">
+              <img src="images/coracao.png" onclick="likeCount(event)" class="heart-icon" data-id="7" />
+              <span class="like-count">0</span>
             </span>
             <span>
               <img src="images/comente.png" />
@@ -356,7 +374,7 @@
               ></textarea>
               <div class="comentario-container">
                 <button class="btnSubmit" onclick="enviarComentario(7)">
-                  Enviar
+                  Comentar
                 </button>
               </div>
             </div>
@@ -370,8 +388,9 @@
           <h2>Big Data</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
-            <span>
-              <img src="images/coracao.png" class="heart-icon" data-id="8" />
+            <span class="spanCount">
+              <img src="images/coracao.png" onclick="likeCount(event)" class="heart-icon" data-id="8" />
+              <span class="like-count">0</span>
             </span>
             <span>
               <img src="images/comente.png" />
@@ -396,7 +415,7 @@
               ></textarea>
               <div class="comentario-container">
                 <button class="btnSubmit" onclick="enviarComentario(8)">
-                  Enviar
+                  Comentar
                 </button>
               </div>
             </div>
@@ -410,8 +429,9 @@
           <h2>Machine Learning</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
-            <span>
-              <img src="images/coracao.png" class="heart-icon" data-id="9" />
+            <span class="spanCount">
+              <img src="images/coracao.png" onclick="likeCount(event)" class="heart-icon" data-id="9" />
+              <span class="like-count">0</span>
             </span>
             <span>
               <img src="images/comente.png" />
@@ -450,7 +470,7 @@
               ></textarea>
               <div class="comentario-container">
                 <button class="btnSubmit" onclick="enviarComentario(9)">
-                  Enviar
+                  Comentar
                 </button>
               </div>
             </div>
@@ -461,22 +481,14 @@
   </body>
   <script defer>
     const heartIcons = document.querySelectorAll(".heart-icon");
-    
-    // heartIcons.forEach(heart => {
 
-    //   heart.addEventListener('click', () => {
-    //     const constSpan = heart.nextElementSibling()
-    //     let count = parseInt(countSpan.textContent);
-
-    //     if(heart.classList.contains('liked')){
-    //       count--;
-    //     }else {
-    //       count ++;
-    //     }
-        
-    //     countSpan.textContent = count;
-    //   })
-    // });
+    function likeCount(event) {
+      const heartIcon = event.target;
+      const likeCountSpan = heartIcon.nextElementSibling;
+      let count = parseInt(likeCountSpan.textContent);
+      count += 1;
+      likeCountSpan.textContent = count;
+    }
 
     heartIcons.forEach((icon) => {
       const id = icon.getAttribute("data-id");
