@@ -8,6 +8,7 @@
   </head>
   <body>
     <div class="perfil">
+      <form class="form-perfil">
       <div class="imageDivPai">
         <div id="usuarioInfo" class="usuario-info">
           <div class="animate-blop2">
@@ -33,16 +34,22 @@
               </path>
             </svg>
           </div>
-          <img
+          <label for="input-foto" class="container-foto">
+            <img
             class="imagem-perfil"
             src="images/foto-perfil.jpg"
             loading="lazy"
-          />
+            />
+            <div class="overlay">
+              <i class="fa-solid fa-camera"></i>
+              <span>Trocar foto</span>
+            </div>
+          </label>
+          <input type="file" id="input-foto" accept="image/*" style="display: none;">
           <p id="nomeCompleto">Carregando...</p>
           <h2 id="mensagem">Carregando...</h2>
         </div>
         <hr />
-        <form class="form-perfil">
           <h1>Editar informações</h1>
           <label for="editName">
             <input type="text" name="editName" placeholder="Novo nome...">
@@ -51,14 +58,33 @@
             <input type="text" name="editEmail" placeholder="Novo e-mail...">
           </label>
 
-          <button class="button-form" type="button">Editar informações</button>
+          <div class="button-form-div">
+            <button class="button-form" type="button">Editar informações</button>
+          </div>
+          <a href="bem-vindo.html">Inicio</a>
         </form>
-        <a href="bem-vindo.html">Home</a>
       </div>
     </div>
   </body>
 
   <script>
+    const inputFoto = document.getElementById('input-foto');
+    const imagemPerfil = document.querySelector('.imagem-perfil');
+
+    inputFoto.addEventListener("change", (event) => {
+      const file = event.target.files[0]
+
+      if(file) {
+        const reader = new FileReader();
+
+        reader.onload = function(e){
+          imagemPerfil.src = e.target.result;
+        }
+
+        reader.readAsDataURL(file)
+      }
+    })
+
     const usuarioEmail = localStorage.getItem("usuarioEmail");
 
     document.getElementById("mensagem").innerText =
