@@ -22,6 +22,11 @@
       <i class="uil uil-search"></i>
     </div>
     <div class="container-row">
+      <div class="menu-hamburguer" onclick="toggleSidebar()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
       <div class="sidebar">
         <div class="imageDivPai">
           <div id="usuarioInfo" class="usuario-info">
@@ -167,10 +172,14 @@
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
             <span class="spanCount">
-              <img src="images/coracao.png" onclick="likeCount(event)" class="heart-icon" data-id="3" />
+              <img
+                src="images/coracao.png"
+                onclick="likeCount(event)"
+                class="heart-icon"
+                data-id="3"
+              />
               <span class="like-count">0</span>
-              </span
-            >
+            </span>
             <span><img src="images/comente.png" /></span>
             <span><img src="images/mail-send.png" /></span>
           </div>
@@ -212,7 +221,12 @@
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
             <span class="spanCount">
-              <img src="images/coracao.png" onclick="likeCount(event)" class="heart-icon" data-id="4" />
+              <img
+                src="images/coracao.png"
+                onclick="likeCount(event)"
+                class="heart-icon"
+                data-id="4"
+              />
               <span class="like-count">0</span>
             </span>
             <span>
@@ -258,7 +272,12 @@
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
             <span class="spanCount">
-              <img src="images/coracao.png" onclick="likeCount(event)" class="heart-icon" data-id="5" />
+              <img
+                src="images/coracao.png"
+                onclick="likeCount(event)"
+                class="heart-icon"
+                data-id="5"
+              />
               <span class="like-count">0</span>
             </span>
             <span>
@@ -301,7 +320,12 @@
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
             <span class="spanCount">
-              <img src="images/coracao.png" onclick="likeCount(event)" class="heart-icon" data-id="6" />
+              <img
+                src="images/coracao.png"
+                onclick="likeCount(event)"
+                class="heart-icon"
+                data-id="6"
+              />
               <span class="like-count">0</span>
             </span>
             <span>
@@ -342,7 +366,12 @@
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
             <span class="spanCount">
-              <img src="images/coracao.png" onclick="likeCount(event)" class="heart-icon" data-id="7" />
+              <img
+                src="images/coracao.png"
+                onclick="likeCount(event)"
+                class="heart-icon"
+                data-id="7"
+              />
               <span class="like-count">0</span>
             </span>
             <span>
@@ -386,7 +415,12 @@
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
             <span class="spanCount">
-              <img src="images/coracao.png" onclick="likeCount(event)" class="heart-icon" data-id="8" />
+              <img
+                src="images/coracao.png"
+                onclick="likeCount(event)"
+                class="heart-icon"
+                data-id="8"
+              />
               <span class="like-count">0</span>
             </span>
             <span>
@@ -427,7 +461,12 @@
           <p>Lorem ipsum dolor sit amet consectetur...</p>
           <div class="interativeIcons">
             <span class="spanCount">
-              <img src="images/coracao.png" onclick="likeCount(event)" class="heart-icon" data-id="9" />
+              <img
+                src="images/coracao.png"
+                onclick="likeCount(event)"
+                class="heart-icon"
+                data-id="9"
+              />
               <span class="like-count">0</span>
             </span>
             <span>
@@ -477,25 +516,55 @@
     </div>
   </body>
   <script defer>
+    const cardsContainer = document.querySelector(".cards-container");
+    const searchBar = document.querySelector(".divSearch");
+
+    window.addEventListener("DOMContentLoaded", () => {
+      cardsContainer.classList.add("centralizar");
+      searchBar.classList.add("centralizar");
+      searchBar.classList.remove("lado");
+
+      setTimeout(() => {
+        cardsContainer.classList.add("aparecer");
+        searchBar.classList.add("aparecer")
+      }, 100)
+    })
     
+
+    function toggleSidebar() {
+      const sidebar = document.querySelector(".sidebar");
+      sidebar.classList.toggle("ativa");
+
+      if (sidebar.classList.contains("ativa")) {
+        cardsContainer.classList.remove("centralizar");
+        searchBar.classList.add("lado");
+        searchBar.classList.remove("centralizar");
+      } else {
+        cardsContainer.classList.add("centralizar");
+        searchBar.classList.add("centralizar");
+        searchBar.classList.remove("lado");
+      }
+    }
+
     const usuarioEmail = localStorage.getItem("usuarioEmail");
 
     document.getElementById("mensagem").innerText =
       usuarioEmail || "Usuário não autenticado!";
 
-    const nomeEmail = usuarioEmail ? usuarioEmail.split("@")[0] : ""
+    const nomeEmail = usuarioEmail ? usuarioEmail.split("@")[0] : "";
 
     const nomes = nomeEmail.split(/[.\-_]/);
 
-    const primeiroNome = nomes[0] || '';
-    const segundoNome = nomes[1] || '';
+    const primeiroNome = nomes[0] || "";
+    const segundoNome = nomes[1] || "";
 
-    const nomeCompleto  = (primeiroNome + ' ' + segundoNome).trim()
+    const nomeCompleto = (primeiroNome + " " + segundoNome).trim();
 
-    document.getElementById("nomeCompleto").innerHTML = nomeCompleto || "Nome não encontrado!"
-    
+    document.getElementById("nomeCompleto").innerHTML =
+      nomeCompleto || "Nome não encontrado!";
+
     const heartIcons = document.querySelectorAll(".heart-icon");
-    
+
     function likeCount(event) {
       const heartIcon = event.target;
       const likeCountSpan = heartIcon.nextElementSibling;
@@ -503,7 +572,7 @@
       count += 1;
       likeCountSpan.textContent = count;
     }
-    
+
     heartIcons.forEach((icon) => {
       const id = icon.getAttribute("data-id");
       const isLiked = localStorage.getItem(`like-${id}`);
@@ -530,13 +599,17 @@
       });
     });
 
-
     function logout() {
       localStorage.removeItem("usuarioEmail");
       window.location.href = "cadastro.html";
     }
 
     let timeoutId = null;
+
+    const containerCards = document.querySelector(".cards-container");
+    const mensagemVazia = document.createElement("p");
+    mensagemVazia.classList.add("mensagem-vazia");
+    mensagemVazia.textContent = "Nenhum resultado encontrado...";
 
     function filtrarItens() {
       if (timeoutId) {
@@ -574,10 +647,22 @@
               update.element.classList.add("card-hidden");
             }
           });
+
+          const algumVisivel = updates.some((update) => update.makeVisible);
+          const msgExistente = containerCards.querySelector(".mensagem-vazia");
+
+          if (!algumVisivel) {
+            if (!msgExistente) {
+              containerCards.appendChild(mensagemVazia);
+            }
+          } else {
+            if (msgExistente) {
+              msgExistente.remove();
+            }
+          }
         });
       }, 300);
     }
-
     document
       .getElementById("SearchBar")
       .addEventListener("input", filtrarItens);
