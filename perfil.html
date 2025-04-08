@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="perfil.css" />
+    <title>Meu Perfil</title>
+  </head>
+  <body>
+    <div class="perfil">
+      <div class="imageDivPai">
+        <div id="usuarioInfo" class="usuario-info">
+          <div class="animate-blop2">
+            <svg
+              viewBox="0 0 500 500"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              width="100%"
+              id="blobSvg"
+            >
+              <path fill="#FFFFFF">
+                <animate
+                  attributeName="d"
+                  dur="10000ms"
+                  repeatCount="indefinite"
+                  values="
+              M427.5,358Q375,466,273,426.5Q171,387,95.5,318.5Q20,250,74,144.5Q128,39,244.5,48Q361,57,420.5,153.5Q480,250,427.5,358Z;
+              M387,336.5Q350,423,245.5,431Q141,439,132.5,344.5Q124,250,144,176Q164,102,267,72Q370,42,397,146Q424,250,387,336.5Z;
+              M379.5,325.5Q337,401,232.5,430.5Q128,460,119,355Q110,250,144,188Q178,126,246.5,132Q315,138,368.5,194Q422,250,379.5,325.5Z;
+              M427.5,358Q375,466,273,426.5Q171,387,95.5,318.5Q20,250,74,144.5Q128,39,244.5,48Q361,57,420.5,153.5Q480,250,427.5,358Z;
+              "
+                ></animate>
+              </path>
+            </svg>
+          </div>
+          <img
+            class="imagem-perfil"
+            src="images/foto-perfil.jpg"
+            loading="lazy"
+          />
+          <p id="nomeCompleto">Carregando...</p>
+          <h2 id="mensagem">Carregando...</h2>
+        </div>
+        <hr />
+        <form class="form-perfil">
+          <h1>Editar informações</h1>
+          <label for="editName">
+            <input type="text" name="editName" placeholder="Novo nome...">
+          </label>
+          <label for="editEmail">
+            <input type="text" name="editEmail" placeholder="Novo e-mail...">
+          </label>
+
+          <button class="button-form" type="button">Editar informações</button>
+        </form>
+        <a href="bem-vindo.html">Home</a>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const usuarioEmail = localStorage.getItem("usuarioEmail");
+
+    document.getElementById("mensagem").innerText =
+      usuarioEmail || "Usuário não autenticado!";
+
+    const nomeEmail = usuarioEmail ? usuarioEmail.split("@")[0] : "";
+
+    const nomes = nomeEmail.split(/[.\-_]/);
+
+    const primeiroNome = nomes[0] || "";
+    const segundoNome = nomes[1] || "";
+
+    const nomeCompleto = (primeiroNome + " " + segundoNome).trim();
+
+    document.getElementById("nomeCompleto").innerHTML =
+      nomeCompleto || "Nome não encontrado!";
+  </script>
+</html>
