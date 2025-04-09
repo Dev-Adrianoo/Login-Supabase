@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="inicio.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="supabase.js" defer></script>
     <link
       href="https://cdn.jsdelivr.net/npm/@iconscout/unicons/css/line.css"
       rel="stylesheet"
@@ -71,7 +73,7 @@
         </div>
       </div>
       <div class="cards-container">
-        <div class="card" onclick="abrirModal('modal-1')">
+        <div class="card" onclick="abrirModal('modal-1', event)">
           <div class="card-image" loading="lazy"></div>
           <h2>Segurança Cibernética</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
@@ -79,7 +81,6 @@
             <span class="spanCount">
               <img
                 src="images/coracao.png"
-                onclick="likeCount(event)"
                 class="heart-icon"
                 data-id="1"
               />
@@ -94,7 +95,7 @@
         </div>
         <div id="modal-1" class="modal">
           <div class="modal-content">
-            <span class="close" onclick="fecharModal('modal-1')">X</span>
+            <span class="close" onclick="fecharModal('modal-1', event)">X</span>
             <h2>Segurança Cibernética</h2>
             <p>
               Detalhes sobre segurança cibernética: proteção contra ataques
@@ -116,7 +117,7 @@
             </div>
           </div>
         </div>
-        <div class="card" onclick="abrirModal('modal-2')">
+        <div class="card" onclick="abrirModal('modal-2', event)">
           <div class="card-image" loading="lazy">
             <img
               src="images/privacidade-web.webp"
@@ -129,7 +130,7 @@
             <span class="spanCount"
               ><img
                 src="images/coracao.png"
-                onclick="likeCount(event)"
+
                 class="heart-icon"
                 data-id="2"
               />
@@ -144,7 +145,7 @@
         </div>
         <div id="modal-2" class="modal">
           <div class="modal-content">
-            <span class="close" onclick="fecharModal('modal-2')">X</span>
+            <span class="close" onclick="fecharModal('modal-2', event)">X</span>
             <h2>Privacidade Web</h2>
             <p>
               Detalhes sobre privacidade na web: como proteger seus dados
@@ -167,7 +168,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="abrirModal('modal-3')">
+        <div class="card" onclick="abrirModal('modal-3',event)">
           <div class="card-image" loading="lazy">
             <img src="images/pshing.webp" alt="pshing-image" />
           </div>
@@ -177,7 +178,6 @@
             <span class="spanCount">
               <img
                 src="images/coracao.png"
-                onclick="likeCount(event)"
                 class="heart-icon"
                 data-id="3"
               />
@@ -193,7 +193,7 @@
 
         <div id="modal-3" class="modal">
           <div class="modal-content">
-            <span class="close" onclick="fecharModal('modal-3')">X</span>
+            <span class="close" onclick="fecharModal('modal-3', event)">X</span>
             <h2>Phishing</h2>
             <p>
               Detalhes sobre phishing: técnicas usadas por hackers para enganar
@@ -216,7 +216,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="abrirModal('modal-4')">
+        <div class="card" onclick="abrirModal('modal-4', event)">
           <div class="card-image" loading="lazy">
             <img
               src="images/desenvolvimento-web.webp"
@@ -229,7 +229,6 @@
             <span class="spanCount">
               <img
                 src="images/coracao.png"
-                onclick="likeCount(event)"
                 class="heart-icon"
                 data-id="4"
               />
@@ -267,7 +266,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="abrirModal('modal-5')">
+        <div class="card" onclick="abrirModal('modal-5',event)">
           <div class="card-image" loading="lazy">
             <img
               src="images/redes-computadores.webp"
@@ -280,7 +279,6 @@
             <span class="spanCount">
               <img
                 src="images/coracao.png"
-                onclick="likeCount(event)"
                 class="heart-icon"
                 data-id="5"
               />
@@ -318,7 +316,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="abrirModal('modal-6')">
+        <div class="card" onclick="abrirModal('modal-6',event)">
           <div class="card-image" loading="lazy">
             <img src="images/programacao.webp" alt="imagem programação" />
           </div>
@@ -328,7 +326,6 @@
             <span class="spanCount">
               <img
                 src="images/coracao.png"
-                onclick="likeCount(event)"
                 class="heart-icon"
                 data-id="6"
               />
@@ -364,7 +361,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="abrirModal('modal-7')">
+        <div class="card" onclick="abrirModal('modal-7',event)">
           <div class="card-image" loading="lazy">
             <img src="images/IA.webp" alt="Inteligência Artificial" />
           </div>
@@ -374,7 +371,6 @@
             <span class="spanCount">
               <img
                 src="images/coracao.png"
-                onclick="likeCount(event)"
                 class="heart-icon"
                 data-id="7"
               />
@@ -413,7 +409,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="abrirModal('modal-8')">
+        <div class="card" onclick="abrirModal('modal-8',event)">
           <div class="card-image" loading="lazy">
             <img src="images/big-data.webp" alt="Big Data" />
           </div>
@@ -423,7 +419,6 @@
             <span class="spanCount">
               <img
                 src="images/coracao.png"
-                onclick="likeCount(event)"
                 class="heart-icon"
                 data-id="8"
               />
@@ -460,7 +455,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="abrirModal('modal-9')">
+        <div class="card" onclick="abrirModal('modal-9', event)">
           <div class="card-image" loading="lazy">
             <img src="images/machine-learning.webp" alt="Machine Learning" />
           </div>
@@ -470,7 +465,6 @@
             <span class="spanCount">
               <img
                 src="images/coracao.png"
-                onclick="likeCount(event)"
                 class="heart-icon"
                 data-id="9"
               />
@@ -523,7 +517,45 @@
       </div>
     </div>
   </body>
-  <script defer>
+
+
+
+
+  <script>
+
+    let userEmail = "";
+    const heartIcons = document.querySelectorAll(".heart-icon");
+
+    async function init() {
+      await getUser();
+      
+      for (const icon of heartIcons) {
+        const id = icon.getAttribute(`data-id`);
+
+  
+    const { data: existingLike } = await supabase
+      .from('likes')
+      .select('id')
+      .eq('post_id', id)
+      .eq('user_email', userEmail)
+      .maybeSingle()
+
+    if (existingLike) {
+      icon.classList.add("liked");
+      icon.src = "images/coracao-hover.png";
+  }
+
+  updateLikeCount(icon, id);
+
+  icon.addEventListener("click", (event) => {
+    event.stopPropagation()
+    toggleLike(event)
+  });
+}
+}
+
+    window.addEventListener('DOMContentLoaded', init);
+
     const cardsContainer = document.querySelector(".cards-container");
     const searchBar = document.querySelector(".divSearch");
 
@@ -571,41 +603,63 @@
     document.getElementById("nomeCompleto").innerHTML =
       nomeCompleto || "Nome não encontrado!";
 
-    const heartIcons = document.querySelectorAll(".heart-icon");
 
-    function likeCount(event) {
-      const heartIcon = event.target;
-      const likeCountSpan = heartIcon.nextElementSibling;
-      let count = parseInt(likeCountSpan.textContent);
-      count += 1;
-      likeCountSpan.textContent = count;
-    }
+  async function getUser() {
+    const { data: { user }, error } = await supabase.auth.getUser();
+      if (error) {
+        console.log("Erro ao pegar usuário:", error);
+          return;
+  }
+        userEmail = user.email;
+}
 
-    heartIcons.forEach((icon) => {
-      const id = icon.getAttribute("data-id");
-      const isLiked = localStorage.getItem(`like-${id}`);
+async function toggleLike(event) {
+  event.preventDefault();
+  event.stopPropagation();
 
-      if (isLiked === "true") {
-        icon.classList.add("liked");
-        icon.src = "images/coracao-hover.png";
-      }
+  const heartIcon = event.currentTarget;
+  const id = heartIcon.getAttribute("data-id");
 
-      icon.addEventListener("click", function (event) {
-        event.stopPropagation();
+  const { data: existingLike, error } = await supabase
+  .from('likes')
+  .select('id')
+  .eq('post_id', id)
+  .eq('user_email', userEmail)
+  .maybeSingle();
 
-        const isAlreadyLiked = icon.classList.contains("liked");
 
-        if (isAlreadyLiked) {
-          icon.classList.remove("liked");
-          icon.src = "images/coracao.png";
-          localStorage.removeItem(`like-${id}`);
-        } else {
-          icon.classList.add("liked");
-          icon.src = "images/coracao-hover.png";
-          localStorage.setItem(`like-${id}`, "true");
-        }
-      });
-    });
+
+    if (error) {
+    console.error('Erro ao buscar like:', error);
+    return;
+  }
+
+
+  if (existingLike) {
+    await supabase.from('likes').delete().eq('id', existingLike.id);
+    heartIcon.classList.remove("liked");
+    heartIcon.src = "images/coracao.png";
+  } else {
+    await supabase.from('likes').insert([
+      { post_id: id, user_email: userEmail }
+    ]);
+    heartIcon.classList.add("liked");
+    heartIcon.src = "images/coracao-hover.png";
+  }
+
+  updateLikeCount(heartIcon, id);
+}
+
+async function updateLikeCount(heartIcon, id) {
+  const { count } = await supabase
+    .from('likes')
+    .select('*', { count: 'exact' })
+    .eq('post_id', id);
+
+  const likeCountSpan = heartIcon.nextElementSibling;
+  likeCountSpan.textContent = count;
+}
+
 
     function logout() {
       localStorage.removeItem("usuarioEmail");
@@ -675,7 +729,7 @@
       .getElementById("SearchBar")
       .addEventListener("input", filtrarItens);
 
-    function abrirModal(modalId) {
+    function abrirModal(modalId, event) {
       const modal = document.getElementById(modalId);
       const modalContent = modal.querySelector(".modal-content");
 

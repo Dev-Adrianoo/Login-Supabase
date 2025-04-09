@@ -257,7 +257,6 @@ button:hover {
 @media(max-width: 1000px){
     .cards-container{
         margin-left: 0;
-        width: 100%;
         justify-content: center;
     }
     .body-2 {
@@ -468,9 +467,7 @@ hr {
 .modal {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+    inset: 0;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     justify-content: center;
@@ -484,10 +481,12 @@ hr {
     background-color: white;
     padding: 20px;
     border-radius: 4px;
-    width: 800px;
-    height: 65vh;
+    max-width: 500px;   /* limite da largura */
+    width: 90%;        /* responsivo */
+    max-height: 80vh;  /* limite da altura */
     overflow-y: auto;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(2px);
     position: relative;
     transition: opacity 0.3s, transform 0.3s;
 }

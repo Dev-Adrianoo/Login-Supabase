@@ -6,6 +6,7 @@
     <title>Login com Supabase</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link rel="stylesheet" href="inicio.css" />
+    <script src="supabase.js" defer></script>
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
     <style>
       body {
@@ -65,11 +66,6 @@
       &copy; 2025 Deivid, Mateus, Kaike, Adriano Todos os direitos reservados!
     </footer>
     <script>
-      const supabase = window.supabase.createClient(
-        "https://glexqscrnswyklapwpbk.supabase.co",
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdsZXhxc2NybnN3eWtsYXB3cGJrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI5OTA1NTQsImV4cCI6MjA1ODU2NjU1NH0.FDZQP4pFl4bZkgzd7HH0xfLBePtiRDrRUV2bRaMBm38"
-      );
-
       async function login() {
         console.log("Tentando fazer login...");
         const email = document.getElementById("email").value.trim();
