@@ -297,6 +297,15 @@ button:hover {
     margin-right: 40px;
 }
 
+@media(min-width: 1460px){
+    .container-row {
+        width: 96%;
+    }
+    .card {
+        width: 360px;
+    }
+}
+
 .menu-hamburguer {
     display: block;
     cursor: pointer;
@@ -453,10 +462,10 @@ li {
 .interativeIcons{
     display: flex;
     justify-content: space-between;
+    width: 90px;
     align-items: center;
     position: absolute;
     padding: 5px;
-    width: calc(100% - 35px);
 }
 
 .interativeIcons .spanCount{
