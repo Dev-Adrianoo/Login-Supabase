@@ -468,6 +468,8 @@ li {
     padding: 5px;
 }
 
+
+
 .interativeIcons .spanCount{
     display: flex;
     align-items: center;
@@ -476,9 +478,10 @@ li {
 }
 
 .interativeIcons img {
-    width: 20px;
+    width: 23px;
     transition: transform  0.3 ease;
 }
+
 
 .interativeIcons img:hover {
     transform: scale(1.3);
