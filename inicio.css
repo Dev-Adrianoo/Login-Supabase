@@ -231,7 +231,6 @@ button:hover {
     transition: all 0.3s ease;
   }
   
-
 .cards-container {
     display: flex;
     flex-wrap: wrap;
@@ -239,16 +238,17 @@ button:hover {
     gap: 20px; 
     padding: 20px;
     max-width: 1350px;
-    width: calc(100% - 250px); 
-    margin-left: 250px; 
     width: 100%; 
+    margin-left: 250px; 
     transition: opacity 0.3s, transform 0.3s;
     margin-bottom: 40px;
     padding-top: 30px;
     transition: all 0.3s ease;
+    max-height: 1120px; 
+
 }
 
-.cards-container.centralizar{
+.cards-container.centralizar {
     margin-left: 0;
     width: 100%;
     justify-content: center;
@@ -263,6 +263,8 @@ button:hover {
         background-position: bottom center;
     }
 }
+
+
 
 .cards-container,
 .divSearch {
@@ -470,24 +472,24 @@ hr {
     inset: 0;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
     z-index: 10;
     border-radius: 4px;
     transition: opacity 0.3s ease;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-content {
     background-color: white;
     padding: 20px;
     border-radius: 4px;
-    max-width: 500px;   /* limite da largura */
-    width: 90%;        /* responsivo */
-    max-height: 80vh;  /* limite da altura */
+    width: 85%;        
+    max-height: 80vh;  
     overflow-y: auto;
+    overflow-x: hidden;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(2px);
-    position: relative;
+    position: absolute;
     transition: opacity 0.3s, transform 0.3s;
 }
 
@@ -559,7 +561,7 @@ hr {
     background-color: rgba(255, 255, 255, 0.568);
     padding: 20px;
     border-radius: 4px;
-    width: 300px;
+    width: 320px;
     height: 320px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -602,7 +604,7 @@ hr {
 }
 
 .card-image img {
-    width: 260px;
+    width: 280px;
     height: 180px;
 }
 

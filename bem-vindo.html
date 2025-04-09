@@ -527,10 +527,17 @@
     const heartIcons = document.querySelectorAll(".heart-icon");
 
     async function init() {
-      await getUser();
-      
-      for (const icon of heartIcons) {
-        const id = icon.getAttribute(`data-id`);
+  await getUser();
+  console.log("userEmail após getUser:", userEmail);
+  
+  if (!userEmail) {
+    console.error("Usuário não autenticado. Redirecionando para login...");
+    window.location.href = "cadastro.html"; 
+    return;
+  }
+
+  for (const icon of heartIcons) {
+    const id = icon.getAttribute("data-id");
 
   
     const { data: existingLike } = await supabase
@@ -538,20 +545,25 @@
       .select('id')
       .eq('post_id', id)
       .eq('user_email', userEmail)
-      .maybeSingle()
+      .maybeSingle();
 
     if (existingLike) {
       icon.classList.add("liked");
       icon.src = "images/coracao-hover.png";
+    } else {
+      icon.classList.remove("liked");
+      icon.src = "images/coracao.png";
+    }
+
+ 
+    updateLikeCount(icon, id);
+
+
+    icon.addEventListener("click", (event) => {
+      event.stopPropagation();
+      toggleLike(event);
+    });
   }
-
-  updateLikeCount(icon, id);
-
-  icon.addEventListener("click", (event) => {
-    event.stopPropagation()
-    toggleLike(event)
-  });
-}
 }
 
     window.addEventListener('DOMContentLoaded', init);
@@ -620,29 +632,48 @@ async function toggleLike(event) {
   const heartIcon = event.currentTarget;
   const id = heartIcon.getAttribute("data-id");
 
-  const { data: existingLike, error } = await supabase
-  .from('likes')
-  .select('id')
-  .eq('post_id', id)
-  .eq('user_email', userEmail)
-  .maybeSingle();
+  console.log("Tentando curtir - post_id:", id, "user_email:", userEmail);
 
+  const { data: existingLike, error: fetchError } = await supabase
+    .from('likes')
+    .select('id')
+    .eq('post_id', id)
+    .eq('user_email', userEmail)
+    .maybeSingle();
 
-
-    if (error) {
-    console.error('Erro ao buscar like:', error);
+  if (fetchError) {
+    console.error("Erro ao buscar like:", fetchError);
     return;
   }
 
+  console.log("Like existente:", existingLike);
 
   if (existingLike) {
-    await supabase.from('likes').delete().eq('id', existingLike.id);
+
+    const { error: deleteError } = await supabase
+      .from('likes')
+      .delete()
+      .eq('id', existingLike.id);
+    if (deleteError) {
+      console.error("Erro ao deletar like:", deleteError);
+      return;
+    }
+    console.log("Like deletado com sucesso");
     heartIcon.classList.remove("liked");
     heartIcon.src = "images/coracao.png";
   } else {
-    await supabase.from('likes').insert([
-      { post_id: id, user_email: userEmail }
-    ]);
+    
+    const { data, error: upsertError } = await supabase
+      .from('likes')
+      .upsert(
+        [{ post_id: id, user_email: userEmail }],
+        { onConflict: ['post_id', 'user_email'] }
+      );
+    if (upsertError) {
+      console.error("Erro ao inserir like com upsert:", upsertError);
+      return;
+    }
+    console.log("Like inserido com sucesso:", data);
     heartIcon.classList.add("liked");
     heartIcon.src = "images/coracao-hover.png";
   }
