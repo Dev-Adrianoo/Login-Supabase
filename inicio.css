@@ -410,13 +410,25 @@ hr {
 
 .list-topics{
     display: flex;
-    justify-content: left;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     gap: 8px;
     width: 100%;
     margin-left: 30px;
 }
+
+.list-topics li {
+    font-size: large;
+    width: 100%;
+}
+
+li {
+    display: flex;
+    justify-content: flex-start;
+    gap: 9px;
+}
+
 
 .card p{
     margin-bottom: 3%;
