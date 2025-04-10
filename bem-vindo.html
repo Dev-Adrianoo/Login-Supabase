@@ -512,10 +512,10 @@
 
   <script>
 
-    let userEmail = "";
     const heartIcons = document.querySelectorAll(".heart-icon");
+    let userEmail = "";
 
-    async function init() {
+  async function init() {
   await getUser();
   console.log("userEmail após getUser:", userEmail);
   
@@ -803,15 +803,15 @@ async function updateLikeCount(heartIcon, id) {
   const cardsContainer = document.querySelector(".cards-container");
   const cards = document.querySelectorAll(".card");
 
-  // Carrega a contagem de comentários para todos os posts
-  const totalCards = cards.length; // Número total de cards (de 1 a 9 no seu caso)
+  
+  const totalCards = cards.length; 
   for (let id = 1; id <= totalCards; id++) {
     await atualizarContagemComentario(id);
   }
 
-  // Registra os eventos dos cards (hover e clique)
+
   cards.forEach((card, index) => {
-    // Eventos de hover
+    
     card.addEventListener("mouseenter", function () {
       cardsContainer.classList.add("card-being-hovered");
       this.classList.add("card-hovered");
@@ -895,9 +895,16 @@ async function carregarComentarios(id) {
       });
 
       comentarioDiv.innerHTML = `
-        <p><strong>${comentario.user_email}</strong> comentou: ${comentario.content}</p>
-        <small>${dataFormatada}</small>
-        ${comentario.user_email === userEmail ? `<button onclick="excluirComentario(${comentario.id}, ${id})">Excluir</button>` : ""}
+        <div class="div-comment">
+        <p class="comment-text">
+          <img class="image-perfil-comments" src="images/foto-perfil.jpg">
+          <strong>${comentario.user_email}</strong>
+        </p>
+
+        <p>${comentario.content}</p>
+        <span class="small-span"><small>${dataFormatada}</small></span> 
+        ${comentario.user_email === userEmail ? `<button class="button-excluir" onclick="excluirComentario(${comentario.id}, ${id})">Excluir</button>` : ""}
+        </div>
       `;
       lista.appendChild(comentarioDiv);
     });

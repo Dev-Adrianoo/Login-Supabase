@@ -4,18 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="perfil.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <script src="supabase.js" defer></script>
     <title>Meu Perfil</title>
   </head>
   <body class="body-3">
+    <header>
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><path fill="#e8e8e8" d="m16 8.41l-4.5-4.5L4.41 11H6v8h3v-6h5v6h3v-8h1.59L17 9.41V6h-1zM2 12l9.5-9.5L15 6V5h3v4l3 3h-3v8h-5v-6h-3v6H5v-8z"/></svg>
+          <a href="bem-vindo.html">Inicio</a>
+        </span>
+      </div>
+    </header>
     <div class="perfil">
       <form class="form-perfil">
+        <h1>Perfil</h1>
         <div class="imageDivPai">
           <div id="usuarioInfo" class="usuario-info">
-            <span class="span-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m16 8.41l-4.5-4.5L4.41 11H6v8h3v-6h5v6h3v-8h1.59L17 9.41V6h-1zM2 12l9.5-9.5L15 6V5h3v4l3 3h-3v8h-5v-6h-3v6H5v-8z"/></svg>
-              <a href="bem-vindo.html">Inicio</a>
-            </span>
             <div class="animate-blop2">
             <svg
               viewBox="0 0 500 500"
@@ -47,7 +52,7 @@
             />
             <div class="overlay">
               <i class="fa-solid fa-camera"></i>
-              <span>Trocar foto</span>
+              <span onclick="document.getElementById('input-Foto').click()">Trocar Foto</span>
             </div>
           </label>
           <input type="file" id="input-foto" accept="image/*" style="display: none;">
@@ -55,52 +60,164 @@
           <h2 id="mensagem">Carregando...</h2>
         </div>
         <hr />
-          <h1>Editar informação</h1>
-          <label for="editName">
-            <input type="text" name="editName" placeholder="Novo nome...">
-          </label>
-
-          <div class="button-form-div">
-            <button class="button-form" type="button">Salvar informação</button>
+          <h1>Estátisticas</h1>
+          <div class="estatisticas">
+            <p>Comentários: <span id="totalComentarios">0</span></p>
+            <hr>
+            <p>Likes dados: <span id="totalLikes">0</span></p>
           </div>
         </form>
       </div>
     </div>
+    <footer>
+      &copy; 2025 Deivid, Mateus, Kaike, Adriano Todos os direitos reservados!
+    </footer>
   </body>
 
   <script>
-    const inputFoto = document.getElementById('input-foto');
-    const imagemPerfil = document.querySelector('.imagem-perfil');
+const inputFoto = document.getElementById('input-foto');
+const imagemPerfil = document.querySelector('.imagem-perfil');
+const nomeCompleto = document.getElementById('nomeCompleto');
+const mensagem = document.getElementById('mensagem');
 
-    inputFoto.addEventListener("change", (event) => {
-      const file = event.target.files[0]
 
-      if(file) {
-        const reader = new FileReader();
+let userEmail = "";
+const safeEmail = encodeURIComponent(userEmail);
 
-        reader.onload = function(e){
-          imagemPerfil.src = e.target.result;
-        }
+// Buscar usuário logado
+async function getUser() {
+  const { data: { user }, error } = await supabase.auth.getUser();
 
-        reader.readAsDataURL(file)
-      }
-    })
+  if (error || !user) {
+    console.log("Usuário não autenticado");
+    window.location.href = "cadastro.html";
+    return;
+  }
 
-    const usuarioEmail = localStorage.getItem("usuarioEmail");
+  userEmail = user.email;
+  
+  gerarNome(userEmail);
+  carregarFotoPerfil();
+}
 
-    document.getElementById("mensagem").innerText =
-      usuarioEmail || "Usuário não autenticado!";
+window.addEventListener('DOMContentLoaded', getUser);
 
-    const nomeEmail = usuarioEmail ? usuarioEmail.split("@")[0] : "";
+// Gerar nome bonito
+function gerarNome(email) {
+  const nomeEmail = email.split("@")[0];
+  const nomes = nomeEmail.split(/[.\-_]/);
+  const primeiroNome = nomes[0] || "";
+  const segundoNome = nomes[1] || "";
 
-    const nomes = nomeEmail.split(/[.\-_]/);
+  nomeCompleto.innerText = (primeiroNome + " " + segundoNome).trim();
+  mensagem.innerText = email; // Mostrar email também se quiser
+}
 
-    const primeiroNome = nomes[0] || "";
-    const segundoNome = nomes[1] || "";
+// Buscar foto do supabase storage
+async function carregarFotoPerfil() {
+  const { data: userData, error: userError } = await supabase.auth.getUser();
+  if (userError) return console.error("Erro pegando user:", userError);
 
-    const nomeCompleto = (primeiroNome + " " + segundoNome).trim();
+  const userEmail = userData.user.email;
+  const safeEmail = userEmail.replace('@', '_').replace(/\./g, '-');
+  
+  const { data, error } = await supabase
+    .storage
+    .from('profile-pictures') // Alterado de 'user_profiles' para 'profile-pictures'
+    .download(`${safeEmail}/foto-perfil.jpg`);
 
-    document.getElementById("nomeCompleto").innerHTML =
-      nomeCompleto || "Nome não encontrado!";
+  if (data) {
+    const url = URL.createObjectURL(data);
+    imagemPerfil.src = url;
+  } else {
+    imagemPerfil.src = "images/foto-perfil.jpg"; // foto padrão
+  }
+}
+
+inputFoto.addEventListener("change", async (event) => {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const { data: userData, error: userError } = await supabase.auth.getUser();
+  if (userError) return console.error("Erro pegando user:", userError);
+
+  const userEmail = userData.user.email;
+  const safeEmail = userEmail.replace('@', '_').replace(/\./g, '-');
+
+  const { error: uploadError } = await supabase
+    .storage
+    .from('profile-pictures') // Alterado de 'user_profiles' para 'profile-pictures'
+    .upload(`${safeEmail}/foto-perfil.jpg`, file, {
+      cacheControl: '3600',
+      upsert: true,
+    });
+
+  if (uploadError) {
+    console.error("Erro ao fazer upload:", uploadError);
+    return;
+  }
+
+  carregarFotoPerfil();
+});
+
+inputFoto.addEventListener("change", async (event) => {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const { data: userData, error: userError } = await supabase.auth.getUser();
+  if (userError) return console.error("Erro pegando user:", userError);
+
+  const userEmail = userData.user.email;
+  const safeEmail = userEmail.replace('@', '_').replace(/\./g, '-');
+
+  const { error: uploadError } = await supabase
+    .storage
+    .from('user_profiles')
+    .upload(`${safeEmail}/foto-perfil.jpg`, file, {
+      cacheControl: '3600',
+      upsert: true,
+    });
+
+  if (uploadError) {
+    console.error("Erro ao fazer upload:", uploadError);
+    return;
+  }
+
+  carregarFotoPerfil();
+});
+
+
+async function carregarEstatisticas() {
+  const { data: userData, error: userError } = await supabase.auth.getUser();
+  
+  if (userError) {
+    console.error("Erro ao pegar usuário:", userError);
+    return;
+  }
+
+  const userEmail = userData.user.email;
+
+
+const { data: likesDados, error: likesError } = await supabase
+  .from('likes')
+  .select('*')
+  .eq('user_email', userEmail);
+
+const { data: comentariosDados, error: comentariosError } = await supabase
+  .from('comments')
+  .select('*')
+  .eq('user_email', userEmail);
+
+
+
+  document.getElementById("totalComentarios").innerText = comentariosDados ? comentariosDados.length : 0;
+  document.getElementById("totalLikes").innerText = likesDados ? likesDados.length : 0;
+}
+
+
+window.addEventListener('DOMContentLoaded', carregarEstatisticas);
+
+
+
   </script>
 </html>
