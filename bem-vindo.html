@@ -85,7 +85,7 @@
         </div>
       </div>
       <div class="cards-container">
-        <div class="card" onclick="abrirModal('modal-1', event)">
+        <div class="card" id="card-1">
           <div class="card-image" loading="lazy"></div>
           <h2>Segurança Cibernética</h2>
           <p>Lorem ipsum dolor sit amet consectetur...</p>
@@ -129,7 +129,7 @@
             </div>
           </div>
         </div>
-        <div class="card" onclick="abrirModal('modal-2', event)">
+        <div class="card" id="card-2">
           <div class="card-image" loading="lazy">
             <img
               src="images/privacidade-web.webp"
@@ -179,7 +179,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="abrirModal('modal-3',event)">
+        <div class="card" id="card-3">
           <div class="card-image" loading="lazy">
             <img src="images/pshing.webp" alt="pshing-image" />
           </div>
@@ -226,7 +226,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="abrirModal('modal-4', event)">
+        <div class="card" id="card-4">
           <div class="card-image" loading="lazy">
             <img
               src="images/desenvolvimento-web.webp"
@@ -252,7 +252,7 @@
 
         <div id="modal-4" class="modal">
           <div class="modal-content">
-            <span class="close" onclick="fecharModal('modal-4')">X</span>
+            <span class="close" onclick="fecharModal('modal-4', event)">X</span>
             <h2>Desenvolvimento Web</h2>
             <p>
               Detalhes sobre desenvolvimento web: HTML, CSS, JavaScript e mais.
@@ -273,7 +273,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="abrirModal('modal-5',event)">
+        <div class="card" id="card-5">
           <div class="card-image" loading="lazy">
             <img
               src="images/redes-computadores.webp"
@@ -299,7 +299,7 @@
 
         <div id="modal-5" class="modal">
           <div class="modal-content">
-            <span class="close" onclick="fecharModal('modal-5')">X</span>
+            <span class="close" onclick="fecharModal('modal-5', event)">X</span>
             <h2>Redes de Computadores</h2>
             <p>
               Detalhes sobre redes de computadores: protocolos e infraestrutura.
@@ -320,7 +320,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="abrirModal('modal-6',event)">
+        <div class="card" id="card-6">
           <div class="card-image" loading="lazy">
             <img src="images/programacao.webp" alt="imagem programação" />
           </div>
@@ -343,7 +343,7 @@
 
         <div id="modal-6" class="modal">
           <div class="modal-content">
-            <span class="close" onclick="fecharModal('modal-6')">X</span>
+            <span class="close" onclick="fecharModal('modal-6', event)">X</span>
             <h2>Programação</h2>
             <p>Detalhes sobre programação: linguagens e lógica de código.</p>
             <div class="comentarios">
@@ -362,7 +362,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="abrirModal('modal-7',event)">
+        <div class="card" id="card-7">
           <div class="card-image" loading="lazy">
             <img src="images/IA.webp" alt="Inteligência Artificial" />
           </div>
@@ -385,7 +385,7 @@
 
         <div id="modal-7" class="modal">
           <div class="modal-content">
-            <span class="close" onclick="fecharModal('modal-7')">X</span>
+            <span class="close" onclick="fecharModal('modal-7', event)">X</span>
             <h2>Inteligência Artificial</h2>
             <p>
               Detalhes sobre inteligência artificial: aprendizado de máquina e
@@ -407,7 +407,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="abrirModal('modal-8',event)">
+        <div class="card" id="card-8">
           <div class="card-image" loading="lazy">
             <img src="images/big-data.webp" alt="Big Data" />
           </div>
@@ -431,7 +431,7 @@
 
         <div id="modal-8" class="modal">
           <div class="modal-content">
-            <span class="close" onclick="fecharModal('modal-8')">X</span>
+            <span class="close" onclick="fecharModal('modal-8', event)">X</span>
             <h2>Big Data</h2>
             <p>Detalhes sobre big data: análise de grandes volumes de dados.</p>
             <div class="comentarios">
@@ -450,7 +450,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="abrirModal('modal-9', event)">
+        <div class="card" id="card-9">
           <div class="card-image" loading="lazy">
             <img src="images/machine-learning.webp" alt="Machine Learning" />
           </div>
@@ -474,7 +474,7 @@
 
         <div id="modal-9" class="modal">
           <div class="modal-content">
-            <span class="close" onclick="fecharModal('modal-9')">X</span>
+            <span class="close" onclick="fecharModal('modal-9', event)">X</span>
             <h2>Machine Learning</h2>
             <p>Detalhes sobre machine learning: algoritmos e aplicações.</p>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias,
@@ -749,20 +749,25 @@ async function updateLikeCount(heartIcon, id) {
       .getElementById("SearchBar")
       .addEventListener("input", filtrarItens);
 
-    function abrirModal(modalId, event) {
-      const modal = document.getElementById(modalId);
-      const modalContent = modal.querySelector(".modal-content");
+      function abrirModal(modalId, event) {
+  event.stopPropagation(); 
 
-      modal.style.display = "flex";
+  const modal = document.getElementById(modalId);
+  const modalContent = modal.querySelector(".modal-content");
 
-      setTimeout(() => {
-        modalContent.style.transform = "scale(1)";
-        modalContent.style.opacity = "1";
-      }, 10);
+  modal.style.display = "flex";
 
-      const id = modalId.split("-")[1];
-      carregarComentarios(id);
-    }
+  setTimeout(() => {
+    modalContent.style.transform = "scale(1)";
+    modalContent.style.opacity = "1";
+  }, 10);
+
+  const id = modalId.split("-")[1];
+
+  carregarComentarios(id);  
+  atualizarContagemComentario(id); 
+}
+
 
     function fecharModal(modalId) {
       const modal = document.getElementById(modalId);
@@ -794,60 +799,188 @@ async function updateLikeCount(heartIcon, id) {
       });
     });
 
-    document.addEventListener("DOMContentLoaded", function () {
-      const cardsContainer = document.querySelector(".cards-container");
-      const cards = document.querySelectorAll(".card");
+    document.addEventListener("DOMContentLoaded", async function () {
+  const cardsContainer = document.querySelector(".cards-container");
+  const cards = document.querySelectorAll(".card");
 
-      cards.forEach((card) => {
-        card.addEventListener("mouseenter", function () {
-          cardsContainer.classList.add("card-being-hovered");
+  // Carrega a contagem de comentários para todos os posts
+  const totalCards = cards.length; // Número total de cards (de 1 a 9 no seu caso)
+  for (let id = 1; id <= totalCards; id++) {
+    await atualizarContagemComentario(id);
+  }
 
-          this.classList.add("card-hovered");
-        });
-
-        card.addEventListener("mouseleave", function () {
-          cardsContainer.classList.remove("card-being-hovered");
-
-          this.classList.remove("card-hovered");
-        });
-      });
+  // Registra os eventos dos cards (hover e clique)
+  cards.forEach((card, index) => {
+    // Eventos de hover
+    card.addEventListener("mouseenter", function () {
+      cardsContainer.classList.add("card-being-hovered");
+      this.classList.add("card-hovered");
     });
 
-    function enviarComentario(id) {
-      const input = document.getElementById(`comentarioInput-${id}`);
-      const lista = document.getElementById(`comentarios-list-${id}`);
-      const texto = input.value.trim();
+    card.addEventListener("mouseleave", function () {
+      cardsContainer.classList.remove("card-being-hovered");
+      this.classList.remove("card-hovered");
+    });
 
-      if (texto !== "") {
-        const comentarioDiv = document.createElement("div");
-        comentarioDiv.classList.add("comentario");
-        comentarioDiv.textContent = texto;
-        lista.appendChild(comentarioDiv);
-
-        const chave = `comentarios-${id}`;
-        const comentariosSalvos = JSON.parse(
-          localStorage.getItem(chave) || "[]"
-        );
-        comentariosSalvos.push(texto);
-        localStorage.setItem(chave, JSON.stringify(comentariosSalvos));
-
-        input.value = "";
+    // Evento de clique
+    card.removeEventListener("click", card.clickHandler);
+    card.clickHandler = (event) => {
+      if (!event.target.classList.contains("close")) {
+        abrirModal(`modal-${index + 1}`, event);
       }
+    };
+    card.addEventListener("click", card.clickHandler);
+  });
+});
+
+    async function enviarComentario(id) {
+  const input = document.getElementById(`comentarioInput-${id}`);
+  const btn = document.querySelector(`#modal-${id} .btnSubmit`);
+  const texto = input.value.trim();
+
+  if (!texto) return;
+
+  try {
+    btn.disabled = true;
+    const { data, error } = await supabase.from('comments').insert({
+      post_id: id,
+      user_email: userEmail, 
+      content: texto,
+    }).select();
+
+    if (error) throw new Error(`Erro ao enviar comentário: ${error.message}`);
+
+    console.log('Comentário inserido:', data);
+    input.value = "";
+    await carregarComentarios(id);
+    await atualizarContagemComentario(id);
+  } catch (error) {
+    console.error(error);
+    alert('Erro ao enviar comentário. Tente novamente.');
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+
+
+async function carregarComentarios(id) {
+  console.log(`Carregando comentários para post ${id} - ${new Date().toISOString()}`);
+  const lista = document.getElementById(`comentarios-list-${id}`);
+  lista.innerHTML = ""; 
+
+  try {
+    const { data, error } = await supabase
+      .from('comments')
+      .select('*')
+      .eq('post_id', id)
+      .order('created_at', { ascending: true });
+
+    if (error) throw new Error(`Erro ao carregar comentários: ${error.message}`);
+
+    console.log(`Comentários carregados para post ${id}:`, data);
+
+    if (data.length === 0) {
+      lista.innerHTML = "<p>Sem comentários ainda.</p>";
+      return;
     }
 
-    function carregarComentarios(id) {
-      const lista = document.getElementById(`comentarios-list-${id}`);
-      const chave = `comentarios-${id}`;
-      const comentariosSalvos = JSON.parse(localStorage.getItem(chave) || "[]");
+    data.forEach((comentario) => {
+      const comentarioDiv = document.createElement("div");
+      comentarioDiv.classList.add("comentario");
 
-      lista.innerHTML = "";
-
-      comentariosSalvos.forEach((comentario) => {
-        const comentarioDiv = document.createElement("div");
-        comentarioDiv.classList.add("comentario");
-        comentarioDiv.textContent = comentario;
-        lista.appendChild(comentarioDiv);
+      const dataFormatada = new Date(comentario.created_at).toLocaleString('pt-BR', {
+        dateStyle: 'short',
+        timeStyle: 'short',
       });
+
+      comentarioDiv.innerHTML = `
+        <p><strong>${comentario.user_email}</strong> comentou: ${comentario.content}</p>
+        <small>${dataFormatada}</small>
+        ${comentario.user_email === userEmail ? `<button onclick="excluirComentario(${comentario.id}, ${id})">Excluir</button>` : ""}
+      `;
+      lista.appendChild(comentarioDiv);
+    });
+  } catch (error) {
+    console.error(error);
+    lista.innerHTML = "<p>Erro ao carregar comentários.</p>";
+  }
+}
+
+
+async function atualizarContagemComentario(id) {
+  try {
+    const { count, error } = await supabase
+      .from('comments')
+      .select('*', { count: 'exact', head: true })
+      .eq('post_id', id);
+
+    if (error) throw new Error(`Erro ao contar comentários: ${error.message}`);
+
+    const comentsCountElement = document.querySelector(`#card-${id} .coments-count`);
+    if (comentsCountElement) {
+      comentsCountElement.textContent = count || 0;
     }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function excluirComentario(comentarioId, postId) {
+  try {
+    console.log(`Tentando excluir comentário ID ${comentarioId} para post ${postId}`);
+    console.log(`Usuário autenticado: ${userEmail}`);
+
+    const { data, error } = await supabase
+      .from('comments')
+      .delete()
+      .eq('id', comentarioId)
+      .select();
+
+    if (error) throw new Error(`Erro ao excluir comentário: ${error.message}`);
+
+    console.log(`Resultado da exclusão:`, data);
+    if (!data || data.length === 0) {
+      console.warn(`Nenhum comentário excluído para o ID ${comentarioId}`);
+    } else {
+      console.log(`Comentário ${comentarioId} excluído com sucesso:`, data);
+    }
+
+    await carregarComentarios(postId);
+    await atualizarContagemComentario(postId);
+  } catch (error) {
+    console.error(error);
+    alert('Erro ao excluir comentário. Verifique o console para detalhes.');
+  }
+}
+
+
+async function contarComentarios() {
+  const { data, error, count } = await supabase
+    .from('comments')
+    .select('*', { count: 'exact' });
+
+  if (error) {
+    console.error('Erro ao contar comentários:', error);
+    return;
+  }
+
+  const contagemPorPost = {};
+
+  data.forEach((comentario) => {
+    if (!contagemPorPost[comentario.post_id]) {
+      contagemPorPost[comentario.post_id] = 0;
+    }
+    contagemPorPost[comentario.post_id]++;
+  });
+
+  for (const postId in contagemPorPost) {
+    const countSpan = document.querySelector(`#card-${postId} .coments-count`);
+    if (countSpan) {
+      countSpan.textContent = contagemPorPost[postId];
+    }
+  }
+}
+
   </script>
 </html>
