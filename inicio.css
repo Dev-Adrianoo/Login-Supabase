@@ -502,14 +502,14 @@ li {
 }
 
 .modal-content {
-    background-color: white;
+    background-color: #fff;
     padding: 20px;
-    border-radius: 4px;
+    border-radius: 12px;
     width: 85%;        
     max-height: 80vh;  
     overflow-y: auto;
     overflow-x: hidden;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(2px);
     position: absolute;
     transition: opacity 0.3s, transform 0.3s;
@@ -694,37 +694,46 @@ li {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
 
-.div-comment{
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-}
+  .div-comment {
+    margin-bottom: 16px;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #f5f5f5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
 
-.image-perfil-comments{
-    border-radius: 50%;
-    width: 50px;
-}
-
-.comment-text{
+  .comment-text {
     display: flex;
-    justify-content: start;
     align-items: center;
-    gap: 15px;
- }
+    gap: 10px;
+  }
+
+.image-perfil-comments {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+}
 
 .small-span{
     text-align: end;
     font-size: 15px;
 }
 
-.button-excluir{
-    border: none;
-    padding: 10px;
-    background-color: black;
+.button-excluir {
+    margin-left: 8px;
+    background-color: #e74c3c; 
     color: white;
-    border-radius: 6px;
-    width: 80px;
-}
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+  }
+  .button-excluir:hover {
+    background-color: #c0392b;
+  }
 
 footer{
     font-family: Arial, Helvetica, sans-serif;

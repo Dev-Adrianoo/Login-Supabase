@@ -11,9 +11,10 @@
   <body class="body-3">
     <header>
       <div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><path fill="#e8e8e8" d="m16 8.41l-4.5-4.5L4.41 11H6v8h3v-6h5v6h3v-8h1.59L17 9.41V6h-1zM2 12l9.5-9.5L15 6V5h3v4l3 3h-3v8h-5v-6h-3v6H5v-8z"/></svg>
-          <a href="bem-vindo.html">Inicio</a>
-        </span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
+          <path fill="#e8e8e8" d="m16 8.41l-4.5-4.5L4.41 11H6v8h3v-6h5v6h3v-8h1.59L17 9.41V6h-1zM2 12l9.5-9.5L15 6V5h3v4l3 3h-3v8h-5v-6h-3v6H5v-8z"/>
+        </svg>
+        <a href="bem-vindo.html">Início</a>
       </div>
     </header>
     <div class="perfil">
@@ -22,45 +23,46 @@
         <div class="imageDivPai">
           <div id="usuarioInfo" class="usuario-info">
             <div class="animate-blop2">
-            <svg
-              viewBox="0 0 500 500"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              width="100%"
-              id="blobSvg"
-            >
-              <path fill="#FFFFFF">
-                <animate
-                  attributeName="d"
-                  dur="10000ms"
-                  repeatCount="indefinite"
-                  values="
-              M427.5,358Q375,466,273,426.5Q171,387,95.5,318.5Q20,250,74,144.5Q128,39,244.5,48Q361,57,420.5,153.5Q480,250,427.5,358Z;
-              M387,336.5Q350,423,245.5,431Q141,439,132.5,344.5Q124,250,144,176Q164,102,267,72Q370,42,397,146Q424,250,387,336.5Z;
-              M379.5,325.5Q337,401,232.5,430.5Q128,460,119,355Q110,250,144,188Q178,126,246.5,132Q315,138,368.5,194Q422,250,379.5,325.5Z;
-              M427.5,358Q375,466,273,426.5Q171,387,95.5,318.5Q20,250,74,144.5Q128,39,244.5,48Q361,57,420.5,153.5Q480,250,427.5,358Z;
-              "
-                ></animate>
-              </path>
-            </svg>
-          </div>
-          <label for="input-foto" class="container-foto">
-            <img
-            class="imagem-perfil"
-            src="images/foto-perfil.jpg"
-            loading="lazy"
-            />
-            <div class="overlay">
-              <i class="fa-solid fa-camera"></i>
-              <span onclick="document.getElementById('input-Foto').click()">Trocar Foto</span>
+              <svg
+                viewBox="0 0 500 500"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                width="100%"
+                id="blobSvg"
+              >
+                <path fill="#FFFFFF">
+                  <animate
+                    attributeName="d"
+                    dur="10000ms"
+                    repeatCount="indefinite"
+                    values="
+                      M427.5,358Q375,466,273,426.5Q171,387,95.5,318.5Q20,250,74,144.5Q128,39,244.5,48Q361,57,420.5,153.5Q480,250,427.5,358Z;
+                      M387,336.5Q350,423,245.5,431Q141,439,132.5,344.5Q124,250,144,176Q164,102,267,72Q370,42,397,146Q424,250,387,336.5Z;
+                      M379.5,325.5Q337,401,232.5,430.5Q128,460,119,355Q110,250,144,188Q178,126,246.5,132Q315,138,368.5,194Q422,250,379.5,325.5Z;
+                      M427.5,358Q375,466,273,426.5Q171,387,95.5,318.5Q20,250,74,144.5Q128,39,244.5,48Q361,57,420.5,153.5Q480,250,427.5,358Z;
+                    "
+                  ></animate>
+                </path>
+              </svg>
             </div>
-          </label>
-          <input type="file" id="input-foto" accept="image/*" style="display: none;">
-          <p id="nomeCompleto">Carregando...</p>
-          <h2 id="mensagem">Carregando...</h2>
-        </div>
-        <hr />
-          <h1>Estátisticas</h1>
+            <label for="input-foto" class="container-foto">
+              <img
+                class="imagem-perfil"
+                src="images/foto-padrao-perfil.jpg"
+                loading="lazy"
+              />
+              <div class="overlay">
+                <i class="fa-solid fa-camera"></i>
+                <span onclick="document.getElementById('input-foto').click()">Trocar Foto</span>
+              </div>
+            </label>
+            <input type="file" id="input-foto" accept="image/*" style="display: none;">
+            <button type="button" id="deletar-foto" style="margin-top: 10px;">Deletar Foto</button>
+            <p id="nomeCompleto">Carregando...</p>
+            <h2 id="mensagem">Carregando...</h2>
+          </div>
+          <hr />
+          <h1>Estatísticas</h1>
           <div class="estatisticas">
             <p>Comentários: <span id="totalComentarios">0</span></p>
             <hr>
@@ -70,154 +72,134 @@
       </div>
     </div>
     <footer>
-      &copy; 2025 Deivid, Mateus, Kaike, Adriano Todos os direitos reservados!
+      © 2025 Deivid, Mateus, Kaike, Adriano Todos os direitos reservados!
     </footer>
-  </body>
 
-  <script>
-const inputFoto = document.getElementById('input-foto');
-const imagemPerfil = document.querySelector('.imagem-perfil');
-const nomeCompleto = document.getElementById('nomeCompleto');
-const mensagem = document.getElementById('mensagem');
+    <script>
+      const inputFoto = document.getElementById('input-foto');
+      const deletarFotoBtn = document.getElementById('deletar-foto');
+      const imagemPerfil = document.querySelector('.imagem-perfil');
+      const nomeCompleto = document.getElementById('nomeCompleto');
+      const mensagem = document.getElementById('mensagem');
+      const bucketName = 'profile-pictures';
 
+      // Buscar usuário logado
+      async function getUser() {
+        const { data: { user }, error } = await supabase.auth.getUser();
 
-let userEmail = "";
-const safeEmail = encodeURIComponent(userEmail);
+        if (error || !user) {
+          console.log("Usuário não autenticado");
+          window.location.href = "cadastro.html";
+          return;
+        }
 
-// Buscar usuário logado
-async function getUser() {
-  const { data: { user }, error } = await supabase.auth.getUser();
+        gerarNome(user.email);
+        carregarFotoPerfil(user.email);
+        carregarEstatisticas(user.email);
+      }
 
-  if (error || !user) {
-    console.log("Usuário não autenticado");
-    window.location.href = "cadastro.html";
-    return;
-  }
+      // Gerar nome a partir do email
+      function gerarNome(email) {
+        const nomeEmail = email.split("@")[0];
+        const nomes = nomeEmail.split(/[.\-_]/);
+        const primeiroNome = nomes[0] || "";
+        const segundoNome = nomes[1] || "";
+        nomeCompleto.innerText = (primeiroNome + " " + segundoNome).trim();
+        mensagem.innerText = email;
+      }
 
-  userEmail = user.email;
-  
-  gerarNome(userEmail);
-  carregarFotoPerfil();
-}
-
-window.addEventListener('DOMContentLoaded', getUser);
-
-// Gerar nome bonito
-function gerarNome(email) {
-  const nomeEmail = email.split("@")[0];
-  const nomes = nomeEmail.split(/[.\-_]/);
-  const primeiroNome = nomes[0] || "";
-  const segundoNome = nomes[1] || "";
-
-  nomeCompleto.innerText = (primeiroNome + " " + segundoNome).trim();
-  mensagem.innerText = email; // Mostrar email também se quiser
-}
-
-// Buscar foto do supabase storage
-async function carregarFotoPerfil() {
-  const { data: userData, error: userError } = await supabase.auth.getUser();
-  if (userError) return console.error("Erro pegando user:", userError);
-
-  const userEmail = userData.user.email;
-  const safeEmail = userEmail.replace('@', '_').replace(/\./g, '-');
-  
+      // Carregar foto de perfil
+// Carregar foto de perfil
+async function carregarFotoPerfil(email) {
+  const safeEmail = email.replace('@', '_').replace(/\./g, '-');
   const { data, error } = await supabase
     .storage
-    .from('profile-pictures') // Alterado de 'user_profiles' para 'profile-pictures'
+    .from(bucketName)
     .download(`${safeEmail}/foto-perfil.jpg`);
 
   if (data) {
     const url = URL.createObjectURL(data);
     imagemPerfil.src = url;
   } else {
-    imagemPerfil.src = "images/foto-perfil.jpg"; // foto padrão
+    // Se não houver foto, usar a padrão
+    imagemPerfil.src = "images/foto-padrao-perfil.jpg";
+    if (error && error.statusCode !== '404') {
+      // Ignorar erro 404 (arquivo não encontrado), mas logar outros erros
+      console.error("Erro ao carregar foto:", error);
+    }
   }
 }
 
-inputFoto.addEventListener("change", async (event) => {
-  const file = event.target.files[0];
-  if (!file) return;
+      // Upload de nova foto
+      inputFoto.addEventListener('change', async (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
 
-  const { data: userData, error: userError } = await supabase.auth.getUser();
-  if (userError) return console.error("Erro pegando user:", userError);
+        const { data: userData, error: userError } = await supabase.auth.getUser();
+        if (userError || !userData.user) {
+          console.error("Erro ao pegar usuário:", userError);
+          return;
+        }
 
-  const userEmail = userData.user.email;
-  const safeEmail = userEmail.replace('@', '_').replace(/\./g, '-');
+        const safeEmail = userData.user.email.replace('@', '_').replace(/\./g, '-');
+        const { error: uploadError } = await supabase
+          .storage
+          .from(bucketName)
+          .upload(`${safeEmail}/foto-perfil.jpg`, file, {
+            cacheControl: '3600',
+            upsert: true,
+          });
 
-  const { error: uploadError } = await supabase
-    .storage
-    .from('profile-pictures') // Alterado de 'user_profiles' para 'profile-pictures'
-    .upload(`${safeEmail}/foto-perfil.jpg`, file, {
-      cacheControl: '3600',
-      upsert: true,
-    });
+        if (uploadError) {
+          console.error("Erro ao fazer upload:", uploadError);
+          alert("Erro ao enviar a foto. Tente novamente.");
+        } else {
+          carregarFotoPerfil(userData.user.email);
+        }
+      });
 
-  if (uploadError) {
-    console.error("Erro ao fazer upload:", uploadError);
-    return;
-  }
+      // Deletar foto de perfil
+      deletarFotoBtn.addEventListener('click', async () => {
+        const { data: userData, error: userError } = await supabase.auth.getUser();
+        if (userError || !userData.user) {
+          console.error("Erro ao pegar usuário:", userError);
+          return;
+        }
 
-  carregarFotoPerfil();
-});
+        const safeEmail = userData.user.email.replace('@', '_').replace(/\./g, '-');
+        const { error: deleteError } = await supabase
+          .storage
+          .from(bucketName)
+          .remove([`${safeEmail}/foto-perfil.jpg`]);
 
-inputFoto.addEventListener("change", async (event) => {
-  const file = event.target.files[0];
-  if (!file) return;
+        if (deleteError) {
+          console.error("Erro ao deletar foto:", deleteError);
+          alert("Erro ao deletar a foto. Tente novamente.");
+        } else {
+          imagemPerfil.src = "images/foto-padrao-perfil.jpg";
+        }
+      });
 
-  const { data: userData, error: userError } = await supabase.auth.getUser();
-  if (userError) return console.error("Erro pegando user:", userError);
+      // Carregar estatísticas
+      async function carregarEstatisticas(email) {
+        const { data: likesDados, error: likesError } = await supabase
+          .from('likes')
+          .select('*')
+          .eq('user_email', email);
 
-  const userEmail = userData.user.email;
-  const safeEmail = userEmail.replace('@', '_').replace(/\./g, '-');
+        const { data: comentariosDados, error: comentariosError } = await supabase
+          .from('comments')
+          .select('*')
+          .eq('user_email', email);
 
-  const { error: uploadError } = await supabase
-    .storage
-    .from('user_profiles')
-    .upload(`${safeEmail}/foto-perfil.jpg`, file, {
-      cacheControl: '3600',
-      upsert: true,
-    });
+        document.getElementById("totalComentarios").innerText = comentariosDados ? comentariosDados.length : 0;
+        document.getElementById("totalLikes").innerText = likesDados ? likesDados.length : 0;
 
-  if (uploadError) {
-    console.error("Erro ao fazer upload:", uploadError);
-    return;
-  }
+        if (likesError) console.error("Erro ao carregar likes:", likesError);
+        if (comentariosError) console.error("Erro ao carregar comentários:", comentariosError);
+      }
 
-  carregarFotoPerfil();
-});
-
-
-async function carregarEstatisticas() {
-  const { data: userData, error: userError } = await supabase.auth.getUser();
-  
-  if (userError) {
-    console.error("Erro ao pegar usuário:", userError);
-    return;
-  }
-
-  const userEmail = userData.user.email;
-
-
-const { data: likesDados, error: likesError } = await supabase
-  .from('likes')
-  .select('*')
-  .eq('user_email', userEmail);
-
-const { data: comentariosDados, error: comentariosError } = await supabase
-  .from('comments')
-  .select('*')
-  .eq('user_email', userEmail);
-
-
-
-  document.getElementById("totalComentarios").innerText = comentariosDados ? comentariosDados.length : 0;
-  document.getElementById("totalLikes").innerText = likesDados ? likesDados.length : 0;
-}
-
-
-window.addEventListener('DOMContentLoaded', carregarEstatisticas);
-
-
-
-  </script>
+      window.addEventListener('DOMContentLoaded', getUser);
+    </script>
+  </body>
 </html>

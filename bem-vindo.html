@@ -512,10 +512,10 @@
 
   <script>
 
-    const heartIcons = document.querySelectorAll(".heart-icon");
-    let userEmail = "";
+const heartIcons = document.querySelectorAll(".heart-icon");
+let userEmail = "";
 
-  async function init() {
+async function init() {
   await getUser();
   console.log("userEmail após getUser:", userEmail);
   
@@ -525,10 +525,11 @@
     return;
   }
 
+  await carregarFotoPerfil(userEmail);
+
   for (const icon of heartIcons) {
     const id = icon.getAttribute("data-id");
 
-  
     const { data: existingLike } = await supabase
       .from('likes')
       .select('id')
@@ -544,9 +545,7 @@
       icon.src = "images/coracao.png";
     }
 
- 
     updateLikeCount(icon, id);
-
 
     icon.addEventListener("click", (event) => {
       event.stopPropagation();
@@ -555,63 +554,96 @@
   }
 }
 
-    window.addEventListener('DOMContentLoaded', init);
+window.addEventListener('DOMContentLoaded', init);
 
-    const cardsContainer = document.querySelector(".cards-container");
-    const searchBar = document.querySelector(".divSearch");
+const cardsContainer = document.querySelector(".cards-container");
+const searchBar = document.querySelector(".divSearch");
 
-    window.addEventListener("DOMContentLoaded", () => {
-      cardsContainer.classList.add("centralizar");
-      searchBar.classList.add("centralizar");
-      searchBar.classList.remove("lado");
+window.addEventListener("DOMContentLoaded", () => {
+  cardsContainer.classList.add("centralizar");
+  searchBar.classList.add("centralizar");
+  searchBar.classList.remove("lado");
 
-      setTimeout(() => {
-        cardsContainer.classList.add("aparecer");
-        searchBar.classList.add("aparecer")
-      }, 100)
-    })
-    
+  setTimeout(() => {
+    cardsContainer.classList.add("aparecer");
+    searchBar.classList.add("aparecer");
+  }, 100);
+});
 
-    function toggleSidebar() {
-      const sidebar = document.querySelector(".sidebar");
-      sidebar.classList.toggle("ativa");
+function toggleSidebar() {
+  const sidebar = document.querySelector(".sidebar");
+  sidebar.classList.toggle("ativa");
 
-      if (sidebar.classList.contains("ativa")) {
-        cardsContainer.classList.remove("centralizar");
-        searchBar.classList.add("lado");
-        searchBar.classList.remove("centralizar");
-      } else {
-        cardsContainer.classList.add("centralizar");
-        searchBar.classList.add("centralizar");
-        searchBar.classList.remove("lado");
-      }
-    }
-
-    const usuarioEmail = localStorage.getItem("usuarioEmail");
-
-    document.getElementById("mensagem").innerText =
-      usuarioEmail || "Usuário não autenticado!";
-
-    const nomeEmail = usuarioEmail ? usuarioEmail.split("@")[0] : "";
-
-    const nomes = nomeEmail.split(/[.\-_]/);
-
-    const primeiroNome = nomes[0] || "";
-    const segundoNome = nomes[1] || "";
-
-    const nomeCompleto = (primeiroNome + " " + segundoNome).trim();
-
-    document.getElementById("nomeCompleto").innerHTML =
-      nomeCompleto || "Nome não encontrado!";
-
-
-  async function getUser() {
-    const { data: { user }, error } = await supabase.auth.getUser();
-      if (error) {
-        console.log("Erro ao pegar usuário:", error);
-          return;
+  if (sidebar.classList.contains("ativa")) {
+    cardsContainer.classList.remove("centralizar");
+    searchBar.classList.add("lado");
+    searchBar.classList.remove("centralizar");
+  } else {
+    cardsContainer.classList.add("centralizar");
+    searchBar.classList.add("centralizar");
+    searchBar.classList.remove("lado");
   }
-        userEmail = user.email;
+}
+
+async function atualizarInformacoesUsuario(email) {
+  document.getElementById("mensagem").innerText = email || "Usuário não autenticado!";
+  const nomeEmail = email ? email.split("@")[0] : "";
+  const nomes = nomeEmail.split(/[.\-_]/);
+  const primeiroNome = nomes[0] || "";
+  const segundoNome = nomes[1] || "";
+  const nomeCompleto = (primeiroNome + " " + segundoNome).trim();
+  document.getElementById("nomeCompleto").innerHTML = nomeCompleto || "Nome não encontrado!";
+}
+
+async function carregarFotoPerfil(email) {
+  const imagemPerfil = document.querySelector(".imagem-perfil");
+  const safeEmail = email.replace('@', '_').replace(/\./g, '-');
+  const bucketName = 'profile-pictures';
+
+  try {
+    const { data, error } = await supabase
+      .storage
+      .from(bucketName)
+      .download(`${safeEmail}/foto-perfil.jpg`);
+
+    if (error) throw error;
+
+    const url = URL.createObjectURL(data);
+    imagemPerfil.src = url;
+  } catch (error) {
+    console.error("Erro ao carregar foto da sidebar:", error);
+    imagemPerfil.src = "images/foto-padrao-perfil.jpg";
+  }
+}
+
+// Nova função para carregar foto de perfil de um usuário específico
+async function obterUrlFotoPerfil(email) {
+  const safeEmail = email.replace('@', '_').replace(/\./g, '-');
+  const bucketName = 'profile-pictures';
+
+  try {
+    const { data, error } = await supabase
+      .storage
+      .from(bucketName)
+      .download(`${safeEmail}/foto-perfil.jpg`);
+
+    if (error) throw error;
+
+    return URL.createObjectURL(data);
+  } catch (error) {
+    // Não logamos erro aqui para evitar spam no console, já que é comum não ter foto
+    return "images/foto-padrao-perfil.jpg";
+  }
+}
+
+async function getUser() {
+  const { data: { user }, error } = await supabase.auth.getUser();
+  if (error || !user) {
+    console.log("Erro ao pegar usuário:", error);
+    return;
+  }
+  userEmail = user.email;
+  await atualizarInformacoesUsuario(user.email);
 }
 
 async function toggleLike(event) {
@@ -638,7 +670,6 @@ async function toggleLike(event) {
   console.log("Like existente:", existingLike);
 
   if (existingLike) {
-
     const { error: deleteError } = await supabase
       .from('likes')
       .delete()
@@ -651,7 +682,6 @@ async function toggleLike(event) {
     heartIcon.classList.remove("liked");
     heartIcon.src = "images/coracao.png";
   } else {
-    
     const { data, error: upsertError } = await supabase
       .from('likes')
       .upsert(
@@ -680,77 +710,74 @@ async function updateLikeCount(heartIcon, id) {
   likeCountSpan.textContent = count;
 }
 
+function logout() {
+  localStorage.removeItem("usuarioEmail");
+  window.location.href = "cadastro.html";
+}
 
-    function logout() {
-      localStorage.removeItem("usuarioEmail");
-      window.location.href = "cadastro.html";
+let timeoutId = null;
+
+const containerCards = document.querySelector(".cards-container");
+const mensagemVazia = document.createElement("p");
+mensagemVazia.classList.add("mensagem-vazia");
+mensagemVazia.textContent = "Nenhum resultado encontrado...";
+
+function filtrarItens() {
+  if (timeoutId) {
+    clearTimeout(timeoutId);
+  }
+
+  timeoutId = setTimeout(() => {
+    const filtro = document.getElementById("SearchBar").value.toLowerCase();
+    const cards = document.querySelectorAll(".card");
+
+    if (!document.getElementById("filter-style")) {
+      const style = document.createElement("style");
+      style.id = "filter-style";
+      style.innerHTML = ".card-hidden { display: none !important; }";
+      document.head.appendChild(style);
     }
 
-    let timeoutId = null;
+    let updates = [];
 
-    const containerCards = document.querySelector(".cards-container");
-    const mensagemVazia = document.createElement("p");
-    mensagemVazia.classList.add("mensagem-vazia");
-    mensagemVazia.textContent = "Nenhum resultado encontrado...";
+    cards.forEach((card) => {
+      const titulo = card.querySelector("h2").textContent.toLowerCase();
+      const shouldBeVisible = titulo.includes(filtro);
 
-    function filtrarItens() {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
+      updates.push({
+        element: card,
+        makeVisible: shouldBeVisible,
+      });
+    });
 
-      timeoutId = setTimeout(() => {
-        const filtro = document.getElementById("SearchBar").value.toLowerCase();
-        const cards = document.querySelectorAll(".card");
-
-        if (!document.getElementById("filter-style")) {
-          const style = document.createElement("style");
-          style.id = "filter-style";
-          style.innerHTML = ".card-hidden { display: none !important; }";
-          document.head.appendChild(style);
+    requestAnimationFrame(() => {
+      updates.forEach((update) => {
+        if (update.makeVisible) {
+          update.element.classList.remove("card-hidden");
+        } else {
+          update.element.classList.add("card-hidden");
         }
+      });
 
-        let updates = [];
+      const algumVisivel = updates.some((update) => update.makeVisible);
+      const msgExistente = containerCards.querySelector(".mensagem-vazia");
 
-        cards.forEach((card) => {
-          const titulo = card.querySelector("h2").textContent.toLowerCase();
-          const shouldBeVisible = titulo.includes(filtro);
+      if (!algumVisivel) {
+        if (!msgExistente) {
+          containerCards.appendChild(mensagemVazia);
+        }
+      } else {
+        if (msgExistente) {
+          msgExistente.remove();
+        }
+      }
+    });
+  }, 300);
+}
+document.getElementById("SearchBar").addEventListener("input", filtrarItens);
 
-          updates.push({
-            element: card,
-            makeVisible: shouldBeVisible,
-          });
-        });
-
-        requestAnimationFrame(() => {
-          updates.forEach((update) => {
-            if (update.makeVisible) {
-              update.element.classList.remove("card-hidden");
-            } else {
-              update.element.classList.add("card-hidden");
-            }
-          });
-
-          const algumVisivel = updates.some((update) => update.makeVisible);
-          const msgExistente = containerCards.querySelector(".mensagem-vazia");
-
-          if (!algumVisivel) {
-            if (!msgExistente) {
-              containerCards.appendChild(mensagemVazia);
-            }
-          } else {
-            if (msgExistente) {
-              msgExistente.remove();
-            }
-          }
-        });
-      }, 300);
-    }
-    document
-      .getElementById("SearchBar")
-      .addEventListener("input", filtrarItens);
-
-      function abrirModal(modalId, event) {
-  event.stopPropagation(); 
+function abrirModal(modalId, event) {
+  event.stopPropagation();
 
   const modal = document.getElementById(modalId);
   const modalContent = modal.querySelector(".modal-content");
@@ -764,54 +791,50 @@ async function updateLikeCount(heartIcon, id) {
 
   const id = modalId.split("-")[1];
 
-  carregarComentarios(id);  
-  atualizarContagemComentario(id); 
+  carregarComentarios(id);
+  atualizarContagemComentario(id);
 }
 
+function fecharModal(modalId) {
+  const modal = document.getElementById(modalId);
+  const modalContent = modal.querySelector(".modal-content");
 
-    function fecharModal(modalId) {
-      const modal = document.getElementById(modalId);
-      const modalContent = modal.querySelector(".modal-content");
+  modalContent.style.transform = "scale(0.8)";
+  modalContent.style.opacity = "0";
 
-      modalContent.style.transform = "scale(0.8)";
-      modalContent.style.opacity = "0";
+  setTimeout(() => {
+    modal.style.display = "none";
+  }, 300);
+}
 
-      setTimeout(() => {
-        modal.style.display = "none";
-      }, 300);
+document.querySelectorAll(".modal").forEach((modal) => {
+  modal.addEventListener("click", function (event) {
+    if (event.target === modal) {
+      fecharModal(modal.id);
     }
-    
-    document.querySelectorAll(".modal").forEach((modal) => {
-      modal.addEventListener("click", function (event) {
-        if (event.target === modal) {
-          fecharModal(modal.id);
-        }
-      });
-    });
+  });
+});
 
-    const cards = document.querySelectorAll(".card");
+const cards = document.querySelectorAll(".card");
 
-    cards.forEach((card, index) => {
-      card.addEventListener("click", (event) => {
-        if (!event.target.classList.contains("close")) {
-          abrirModal(`modal-${index + 1}`);
-        }
-      });
-    });
+cards.forEach((card, index) => {
+  card.addEventListener("click", (event) => {
+    if (!event.target.classList.contains("close")) {
+      abrirModal(`modal-${index + 1}`);
+    }
+  });
+});
 
-    document.addEventListener("DOMContentLoaded", async function () {
+document.addEventListener("DOMContentLoaded", async function () {
   const cardsContainer = document.querySelector(".cards-container");
   const cards = document.querySelectorAll(".card");
 
-  
-  const totalCards = cards.length; 
+  const totalCards = cards.length;
   for (let id = 1; id <= totalCards; id++) {
     await atualizarContagemComentario(id);
   }
 
-
   cards.forEach((card, index) => {
-    
     card.addEventListener("mouseenter", function () {
       cardsContainer.classList.add("card-being-hovered");
       this.classList.add("card-hovered");
@@ -822,7 +845,6 @@ async function updateLikeCount(heartIcon, id) {
       this.classList.remove("card-hovered");
     });
 
-    // Evento de clique
     card.removeEventListener("click", card.clickHandler);
     card.clickHandler = (event) => {
       if (!event.target.classList.contains("close")) {
@@ -833,7 +855,7 @@ async function updateLikeCount(heartIcon, id) {
   });
 });
 
-    async function enviarComentario(id) {
+async function enviarComentario(id) {
   const input = document.getElementById(`comentarioInput-${id}`);
   const btn = document.querySelector(`#modal-${id} .btnSubmit`);
   const texto = input.value.trim();
@@ -844,7 +866,7 @@ async function updateLikeCount(heartIcon, id) {
     btn.disabled = true;
     const { data, error } = await supabase.from('comments').insert({
       post_id: id,
-      user_email: userEmail, 
+      user_email: userEmail,
       content: texto,
     }).select();
 
@@ -862,12 +884,18 @@ async function updateLikeCount(heartIcon, id) {
   }
 }
 
-
+function obterNomeExibicao(email) {
+  const nomeEmail = email ? email.split("@")[0] : "";
+  const nomes = nomeEmail.split(/[.\-_]/);
+  const primeiroNome = nomes[0] || "";
+  const segundoNome = nomes[1] || "";
+  return (primeiroNome + " " + segundoNome).trim() || email;
+}
 
 async function carregarComentarios(id) {
   console.log(`Carregando comentários para post ${id} - ${new Date().toISOString()}`);
   const lista = document.getElementById(`comentarios-list-${id}`);
-  lista.innerHTML = ""; 
+  lista.innerHTML = "";
 
   try {
     const { data, error } = await supabase
@@ -885,7 +913,7 @@ async function carregarComentarios(id) {
       return;
     }
 
-    data.forEach((comentario) => {
+    for (const comentario of data) {
       const comentarioDiv = document.createElement("div");
       comentarioDiv.classList.add("comentario");
 
@@ -894,26 +922,27 @@ async function carregarComentarios(id) {
         timeStyle: 'short',
       });
 
+      const fotoUrl = await obterUrlFotoPerfil(comentario.user_email);
+      const nomeExibicao = obterNomeExibicao(comentario.user_email);
+
       comentarioDiv.innerHTML = `
         <div class="div-comment">
-        <p class="comment-text">
-          <img class="image-perfil-comments" src="images/foto-perfil.jpg">
-          <strong>${comentario.user_email}</strong>
-        </p>
-
-        <p>${comentario.content}</p>
-        <span class="small-span"><small>${dataFormatada}</small></span> 
-        ${comentario.user_email === userEmail ? `<button class="button-excluir" onclick="excluirComentario(${comentario.id}, ${id})">Excluir</button>` : ""}
+          <p class="comment-text">
+            <img class="image-perfil-comments" src="${fotoUrl}">
+            <strong>${nomeExibicao}</strong>
+          </p>
+          <p>${comentario.content}</p>
+          <span class="small-span"><small>${dataFormatada}</small></span>
+          ${comentario.user_email === userEmail ? `<button class="button-excluir" onclick="excluirComentario(${comentario.id}, ${id})">Excluir</button>` : ""}
         </div>
       `;
       lista.appendChild(comentarioDiv);
-    });
+    }
   } catch (error) {
     console.error(error);
     lista.innerHTML = "<p>Erro ao carregar comentários.</p>";
   }
 }
-
 
 async function atualizarContagemComentario(id) {
   try {
@@ -961,7 +990,6 @@ async function excluirComentario(comentarioId, postId) {
   }
 }
 
-
 async function contarComentarios() {
   const { data, error, count } = await supabase
     .from('comments')
@@ -988,6 +1016,5 @@ async function contarComentarios() {
     }
   }
 }
-
   </script>
 </html>
