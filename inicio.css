@@ -156,7 +156,6 @@ button:hover {
     justify-content: flex-start;
     align-items: flex-start;
     overflow-x: hidden;
-    background-image: url(images/fundo-principal.webp);
     background-size: cover;
     transition: background-position 0.3s ease;
     width: 100%;
@@ -412,12 +411,12 @@ button:hover {
 }
 
 .animate-blop2{
-    width: 130px;
+    width: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    top: 5px;
+    top: 20px;
 }
 
 .imagem-perfil{
@@ -492,11 +491,16 @@ li {
 
 
 .card p{
-    margin-bottom: 3%;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
 }
 
 .card h2 {
-    margin: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color:#333
 }
 
 @media(min-width: 1450px){
@@ -514,10 +518,12 @@ li {
 .interativeIcons{
     display: flex;
     justify-content: space-between;
-    width: 90px;
+    width: 100px;
+    gap: 20px;
+    margin-top: 20px;
     align-items: center;
     position: absolute;
-    padding: 5px;
+    padding: 15px 20px;
 }
 
 
@@ -554,7 +560,7 @@ li {
 
 .modal-content {
     background-color: #fff;
-    padding: 20px;
+    padding: 24px;
     border-radius: 12px;
     width: 85%;        
     max-height: 80vh;  
@@ -564,6 +570,24 @@ li {
     backdrop-filter: blur(2px);
     position: absolute;
     transition: opacity 0.3s, transform 0.3s;
+}
+
+.modal-content h2 {
+    padding: 20px 24px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.div-imagem-post{
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal textarea {
@@ -625,12 +649,16 @@ li {
   }
   
 .close {
+    background: none;
+    border: none;
+    cursor: pointer;
     position: absolute;
     top: 10px;
     right: 15px;
-    font-size: 24px;
+    font-size: 1.5rem;
     cursor: pointer;
-    color: #333;
+    color: #777;
+    transition: color 0.2s;
 }
 
 .close:hover {
@@ -644,25 +672,26 @@ li {
 }
 
 .modal-content p {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 1rem;
 }
 
 .card {
-    background-color: rgba(255, 255, 255, 0.568);
-    padding: 20px;
     border-radius: 4px;
+    overflow: hidden;
     width: 320px;
     height: 320px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    box-shadow: 3px 3px 3px 4px rgba(0, 0, 0, 0.192);
-    position: relative; 
-    opacity: 1;
-    transition: transform 0.3s ease, opacity 0.3s ease;
     justify-content: space-between;
     align-items: center;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
+
 
 
 .card-being-hovered .card:not(.card-hovered) {
@@ -689,14 +718,33 @@ li {
 }
 
 .card-image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-image: url(images/seguranca-cibernetica.webp);
     background-position: center center;
     background-size: cover;
     height: 180px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    overflow: hidden;
+}
+
+.imagens-post{
+    max-width: 100%;
+    width: 500px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.imagens-post:hover {
+    transform: scale(1.02);
 }
 
 .card-image img {
-    width: 280px;
+    width: 290px;
     height: 180px;
 }
 

@@ -83,7 +83,7 @@
       const mensagem = document.getElementById('mensagem');
       const bucketName = 'profile-pictures';
 
-      // Buscar usuário logado
+      
       async function getUser() {
         const { data: { user }, error } = await supabase.auth.getUser();
 
@@ -98,7 +98,7 @@
         carregarEstatisticas(user.email);
       }
 
-      // Gerar nome a partir do email
+
       function gerarNome(email) {
         const nomeEmail = email.split("@")[0];
         const nomes = nomeEmail.split(/[.\-_]/);
@@ -108,9 +108,8 @@
         mensagem.innerText = email;
       }
 
-      // Carregar foto de perfil
-// Carregar foto de perfil
-async function carregarFotoPerfil(email) {
+
+  async function carregarFotoPerfil(email) {
   const safeEmail = email.replace('@', '_').replace(/\./g, '-');
   const { data, error } = await supabase
     .storage
@@ -121,16 +120,15 @@ async function carregarFotoPerfil(email) {
     const url = URL.createObjectURL(data);
     imagemPerfil.src = url;
   } else {
-    // Se não houver foto, usar a padrão
+    
     imagemPerfil.src = "images/foto-padrao-perfil.jpg";
     if (error && error.statusCode !== '404') {
-      // Ignorar erro 404 (arquivo não encontrado), mas logar outros erros
+
       console.error("Erro ao carregar foto:", error);
     }
   }
 }
 
-      // Upload de nova foto
       inputFoto.addEventListener('change', async (event) => {
         const file = event.target.files[0];
         if (!file) return;
@@ -158,7 +156,7 @@ async function carregarFotoPerfil(email) {
         }
       });
 
-      // Deletar foto de perfil
+     
       deletarFotoBtn.addEventListener('click', async () => {
         const { data: userData, error: userError } = await supabase.auth.getUser();
         if (userError || !userData.user) {
@@ -180,7 +178,6 @@ async function carregarFotoPerfil(email) {
         }
       });
 
-      // Carregar estatísticas
       async function carregarEstatisticas(email) {
         const { data: likesDados, error: likesError } = await supabase
           .from('likes')
