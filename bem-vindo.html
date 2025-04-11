@@ -386,10 +386,10 @@
 
         <div class="card" id="card-7">
           <div class="card-image" loading="lazy">
-            <img src="images/IA.webp" alt="Inteligência Artificial" />
+            <img src="images/images.jpg" alt="Inteligência Artificial" />
           </div>
-          <h2>Inteligência Artificial</h2>
-          <p>Lorem ipsum dolor sit amet consectetur...</p>
+          <h2>Homem Aranha</h2>
+          <p>Veja o estado atual do Homem Aranha...</p>
           <div class="interativeIcons">
             <span class="spanCount">
               <img
@@ -408,13 +408,12 @@
         <div id="modal-7" class="modal">
           <div class="modal-content">
             <span class="close" onclick="fecharModal('modal-7', event)">X</span>
-            <h2>Inteligência Artificial</h2>
+            <h2>Homem Aranha</h2>
             <p>
-              Detalhes sobre inteligência artificial: aprendizado de máquina e
-              mais.
+              Homem-Aranha desiste de salvar a cidade e vira programador. Entenda o motivo.
             </p>
             <div class="div-imagem-post">
-              <img class="imagens-post" src="images/inteligencia-images.webp" alt="">
+              <img class="imagens-post" src="images/WhatsApp Image 2025-04-11 at 08.14.46.jpeg">
             </div>
             <div class="comentarios">
               <h3>Comentários</h3>
@@ -641,7 +640,6 @@ async function carregarFotoPerfil(email) {
   }
 }
 
-// Nova função para carregar foto de perfil de um usuário específico
 async function obterUrlFotoPerfil(email) {
   const safeEmail = email.replace('@', '_').replace(/\./g, '-');
   const bucketName = 'profile-pictures';
@@ -656,7 +654,6 @@ async function obterUrlFotoPerfil(email) {
 
     return URL.createObjectURL(data);
   } catch (error) {
-    // Não logamos erro aqui para evitar spam no console, já que é comum não ter foto
     return "images/foto-padrao-perfil.jpg";
   }
 }
