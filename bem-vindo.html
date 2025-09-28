@@ -540,12 +540,18 @@ const heartIcons = document.querySelectorAll(".heart-icon");
 let userEmail = "";
 
 async function init() {
+  if (typeof supabase === 'undefined') {
+    console.error('Supabase client is not loaded.');
+    setTimeout(init, 100); // Tenta novamente em 100ms
+    return;
+  }
+
   await getUser();
   console.log("userEmail após getUser:", userEmail);
   
   if (!userEmail) {
     console.error("Usuário não autenticado. Redirecionando para login...");
-    window.location.href = "cadastro.html"; 
+    window.location.href = "index.html"; 
     return;
   }
 
@@ -554,12 +560,17 @@ async function init() {
   for (const icon of heartIcons) {
     const id = icon.getAttribute("data-id");
 
-    const { data: existingLike } = await supabase
+    const { data: existingLike, error } = await supabase
       .from('likes')
       .select('id')
       .eq('post_id', id)
       .eq('user_email', userEmail)
       .maybeSingle();
+
+    if (error) {
+      console.error('Erro ao verificar like:', error);
+      continue; // Pula para a próxima iteração
+    }
 
     if (existingLike) {
       icon.classList.add("liked");
@@ -734,7 +745,7 @@ async function updateLikeCount(heartIcon, id) {
 
 function logout() {
   localStorage.removeItem("usuarioEmail");
-  window.location.href = "cadastro.html";
+  window.location.href = "index.html";
 }
 
 let timeoutId = null;

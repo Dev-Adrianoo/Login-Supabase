@@ -76,127 +76,129 @@
     </footer>
 
     <script>
-      const inputFoto = document.getElementById('input-foto');
-      const deletarFotoBtn = document.getElementById('deletar-foto');
-      const imagemPerfil = document.querySelector('.imagem-perfil');
-      const nomeCompleto = document.getElementById('nomeCompleto');
-      const mensagem = document.getElementById('mensagem');
-      const bucketName = 'profile-pictures';
-
-      
-      async function getUser() {
-        const { data: { user }, error } = await supabase.auth.getUser();
-
-        if (error || !user) {
-          console.log("Usuário não autenticado");
-          window.location.href = "cadastro.html";
+      document.addEventListener('DOMContentLoaded', () => {
+        if (typeof supabase === 'undefined') {
+          console.error('Supabase client is not loaded.');
+          setTimeout(() => document.dispatchEvent(new Event('DOMContentLoaded')), 100);
           return;
         }
+        
+        const inputFoto = document.getElementById('input-foto');
+        const deletarFotoBtn = document.getElementById('deletar-foto');
+        const imagemPerfil = document.querySelector('.imagem-perfil');
+        const nomeCompleto = document.getElementById('nomeCompleto');
+        const mensagem = document.getElementById('mensagem');
+        const bucketName = 'profile-pictures';
 
-        gerarNome(user.email);
-        carregarFotoPerfil(user.email);
-        carregarEstatisticas(user.email);
-      }
+        async function getUser() {
+          const { data: { user }, error } = await supabase.auth.getUser();
 
+          if (error || !user) {
+            console.log("Usuário não autenticado");
+            window.location.href = "index.html";
+            return;
+          }
 
-      function gerarNome(email) {
-        const nomeEmail = email.split("@")[0];
-        const nomes = nomeEmail.split(/[.\-_]/);
-        const primeiroNome = nomes[0] || "";
-        const segundoNome = nomes[1] || "";
-        nomeCompleto.innerText = (primeiroNome + " " + segundoNome).trim();
-        mensagem.innerText = email;
-      }
-
-
-  async function carregarFotoPerfil(email) {
-  const safeEmail = email.replace('@', '_').replace(/\./g, '-');
-  const { data, error } = await supabase
-    .storage
-    .from(bucketName)
-    .download(`${safeEmail}/foto-perfil.jpg`);
-
-  if (data) {
-    const url = URL.createObjectURL(data);
-    imagemPerfil.src = url;
-  } else {
-    
-    imagemPerfil.src = "images/foto-padrao-perfil.jpg";
-    if (error && error.statusCode !== '404') {
-
-      console.error("Erro ao carregar foto:", error);
-    }
-  }
-}
-
-      inputFoto.addEventListener('change', async (event) => {
-        const file = event.target.files[0];
-        if (!file) return;
-
-        const { data: userData, error: userError } = await supabase.auth.getUser();
-        if (userError || !userData.user) {
-          console.error("Erro ao pegar usuário:", userError);
-          return;
+          gerarNome(user.email);
+          carregarFotoPerfil(user.email);
+          carregarEstatisticas(user.email);
         }
 
-        const safeEmail = userData.user.email.replace('@', '_').replace(/\./g, '-');
-        const { error: uploadError } = await supabase
-          .storage
-          .from(bucketName)
-          .upload(`${safeEmail}/foto-perfil.jpg`, file, {
-            cacheControl: '3600',
-            upsert: true,
-          });
-
-        if (uploadError) {
-          console.error("Erro ao fazer upload:", uploadError);
-          alert("Erro ao enviar a foto. Tente novamente.");
-        } else {
-          carregarFotoPerfil(userData.user.email);
+        function gerarNome(email) {
+          const nomeEmail = email.split("@")[0];
+          const nomes = nomeEmail.split(/[.\-_]/);
+          const primeiroNome = nomes[0] || "";
+          const segundoNome = nomes[1] || "";
+          nomeCompleto.innerText = (primeiroNome + " " + segundoNome).trim();
+          mensagem.innerText = email;
         }
+
+        async function carregarFotoPerfil(email) {
+          const safeEmail = email.replace('@', '_').replace(/\./g, '-');
+          const { data, error } = await supabase
+            .storage
+            .from(bucketName)
+            .download(`${safeEmail}/foto-perfil.jpg`);
+
+          if (data) {
+            const url = URL.createObjectURL(data);
+            imagemPerfil.src = url;
+          } else {
+            imagemPerfil.src = "images/foto-padrao-perfil.jpg";
+            if (error && error.statusCode !== '404') {
+              console.error("Erro ao carregar foto:", error);
+            }
+          }
+        }
+
+        inputFoto.addEventListener('change', async (event) => {
+          const file = event.target.files[0];
+          if (!file) return;
+
+          const { data: userData, error: userError } = await supabase.auth.getUser();
+          if (userError || !userData.user) {
+            console.error("Erro ao pegar usuário:", userError);
+            return;
+          }
+
+          const safeEmail = userData.user.email.replace('@', '_').replace(/\./g, '-');
+          const { error: uploadError } = await supabase
+            .storage
+            .from(bucketName)
+            .upload(`${safeEmail}/foto-perfil.jpg`, file, {
+              cacheControl: '3600',
+              upsert: true,
+            });
+
+          if (uploadError) {
+            console.error("Erro ao fazer upload:", uploadError);
+            alert("Erro ao enviar a foto. Tente novamente.");
+          } else {
+            carregarFotoPerfil(userData.user.email);
+          }
+        });
+
+        deletarFotoBtn.addEventListener('click', async () => {
+          const { data: userData, error: userError } = await supabase.auth.getUser();
+          if (userError || !userData.user) {
+            console.error("Erro ao pegar usuário:", userError);
+            return;
+          }
+
+          const safeEmail = userData.user.email.replace('@', '_').replace(/\./g, '-');
+          const { error: deleteError } = await supabase
+            .storage
+            .from(bucketName)
+            .remove([`${safeEmail}/foto-perfil.jpg`]);
+
+          if (deleteError) {
+            console.error("Erro ao deletar foto:", deleteError);
+            alert("Erro ao deletar a foto. Tente novamente.");
+          } else {
+            imagemPerfil.src = "images/foto-padrao-perfil.jpg";
+          }
+        });
+
+        async function carregarEstatisticas(email) {
+          const { data: likesDados, error: likesError } = await supabase
+            .from('likes')
+            .select('*')
+            .eq('user_email', email);
+
+          const { data: comentariosDados, error: comentariosError } = await supabase
+            .from('comments')
+            .select('*')
+            .eq('user_email', email);
+
+          document.getElementById("totalComentarios").innerText = comentariosDados ? comentariosDados.length : 0;
+          document.getElementById("totalLikes").innerText = likesDados ? likesDados.length : 0;
+
+          if (likesError) console.error("Erro ao carregar likes:", likesError);
+          if (comentariosError) console.error("Erro ao carregar comentários:", comentariosError);
+        }
+
+        getUser();
       });
-
-     
-      deletarFotoBtn.addEventListener('click', async () => {
-        const { data: userData, error: userError } = await supabase.auth.getUser();
-        if (userError || !userData.user) {
-          console.error("Erro ao pegar usuário:", userError);
-          return;
-        }
-
-        const safeEmail = userData.user.email.replace('@', '_').replace(/\./g, '-');
-        const { error: deleteError } = await supabase
-          .storage
-          .from(bucketName)
-          .remove([`${safeEmail}/foto-perfil.jpg`]);
-
-        if (deleteError) {
-          console.error("Erro ao deletar foto:", deleteError);
-          alert("Erro ao deletar a foto. Tente novamente.");
-        } else {
-          imagemPerfil.src = "images/foto-padrao-perfil.jpg";
-        }
-      });
-
-      async function carregarEstatisticas(email) {
-        const { data: likesDados, error: likesError } = await supabase
-          .from('likes')
-          .select('*')
-          .eq('user_email', email);
-
-        const { data: comentariosDados, error: comentariosError } = await supabase
-          .from('comments')
-          .select('*')
-          .eq('user_email', email);
-
-        document.getElementById("totalComentarios").innerText = comentariosDados ? comentariosDados.length : 0;
-        document.getElementById("totalLikes").innerText = likesDados ? likesDados.length : 0;
-
-        if (likesError) console.error("Erro ao carregar likes:", likesError);
-        if (comentariosError) console.error("Erro ao carregar comentários:", comentariosError);
-      }
-
-      window.addEventListener('DOMContentLoaded', getUser);
     </script>
   </body>
 </html>

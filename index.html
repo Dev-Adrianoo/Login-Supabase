@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login com Supabase</title>
+    <link rel="manifest" href="manifest.json">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link rel="stylesheet" href="inicio.css" />
     <script src="supabase.js" defer></script>
@@ -66,7 +67,23 @@
       &copy; 2025 Deivid, Mateus, Kaike, Adriano Todos os direitos reservados!
     </footer>
     <script>
+      function inicializar() {
+        if (typeof supabase === 'undefined') {
+          console.error('Supabase client is not loaded.');
+          setTimeout(inicializar, 100); // Tenta novamente em 100ms
+          return;
+        }
+        // A partir daqui, o supabase está definido
+      }
+
+      document.addEventListener('DOMContentLoaded', inicializar);
+
       async function login() {
+        if (typeof supabase === 'undefined') {
+          document.getElementById("mensagemCadastro").innerText = "Supabase não carregado. Tente novamente.";
+          return;
+        }
+
         console.log("Tentando fazer login...");
         const email = document.getElementById("email").value.trim();
         const senha = document.getElementById("senha").value.trim();
@@ -97,6 +114,11 @@
       }
 
       async function cadastrar() {
+        if (typeof supabase === 'undefined') {
+          document.getElementById("mensagemCadastro").innerText = "Supabase não carregado. Tente novamente.";
+          return;
+        }
+
         console.log("Tentando cadastrar...");
         const email = document.getElementById("email").value.trim();
         const senha = document.getElementById("senha").value.trim();
@@ -119,6 +141,16 @@
           document.getElementById("mensagemCadastro").innerText =
             "Cadastro realizado com sucesso!";
         }
+      }
+
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js').then(registration => {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          }, err => {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+        });
       }
     </script>
 
