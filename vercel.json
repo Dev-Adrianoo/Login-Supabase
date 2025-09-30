@@ -1,3 +1,46 @@
 {
-  "public": true
+  "builds": [
+    {
+      "src": "*.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "manifest.json",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "inicio.css",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "perfil.css",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "supabase.js",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "service-worker.js",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "images/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/bem-vindo",
+      "dest": "/bem-vindo.html"
+    },
+    {
+      "src": "/perfil",
+      "dest": "/perfil.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
 }
